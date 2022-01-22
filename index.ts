@@ -333,11 +333,11 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-/* showSnack(
+showSnack(
   `WÖRDL!<br><br>`,
   `Spielerisch ein oberösterreichisches Kulturgut - die Mundart kultivieren. <br>Damit es dann auch in Kollerschlag mir der Wegbeschreibug klappt...`,
   'info',
   500
-); */
+);
 
 addRow();
