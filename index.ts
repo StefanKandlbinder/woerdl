@@ -104,7 +104,7 @@ function addRow() {
   }
   row[0].focus();
 
-  // window.scrollTo(0, document.body.scrollHeight);
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 function showSnack(
