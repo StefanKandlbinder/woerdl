@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Spielerisch, ein oberösterreichisches Kulturgut, die Mundart, erhalten. Damit es dann auch in Kollerschlag mir der Verständigung klappt...",
   "source": "index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
