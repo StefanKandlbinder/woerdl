@@ -335,7 +335,7 @@ document.addEventListener('keydown', function (event) {
 
 showSnack(
   `WÖRDL!<br><br>`,
-  `Spielerisch ein oberösterreichisches Kulturgut - die Mundart kultivieren. <br>Damit es dann auch in Kollerschlag mir der Wegbeschreibug klappt...`,
+  `Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann auch überall im "Müviatl" mir der Wegbeschreibung klappt...`,
   'info',
   500
 );
