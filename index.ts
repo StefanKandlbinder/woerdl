@@ -236,7 +236,7 @@ function checkRow(guess: string, word: string) {
 
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
-    showSnack(`💡 "${guess}", `, `des sogt ma nix! 💡`, 'warning', delay);
+    showSnack(`💡 "${guess}", `, `des is ma neich! 💡`, 'warning', delay);
     addRow();
     return;
   }
