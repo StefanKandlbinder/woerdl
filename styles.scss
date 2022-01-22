@@ -6,6 +6,7 @@
   --background: 5 5 5;
   --white: 250 250 250;
   --grid-size: 2.5rem;
+  --keyboard-height: 10rem;
   --key: 170 170 170;
 }
 
@@ -20,6 +21,10 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+}
+
+body {
+  padding-bottom: calc(var(--keyboard-height) + 1rem);
 }
 
 *,
@@ -45,7 +50,6 @@ h1 {
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding-bottom: 9.5rem;
 }
 
 #grid {
@@ -156,7 +160,7 @@ h1 {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 9rem;
+  height: var(--keyboard-height);
   display: flex;
   flex-direction: column;
   align-items: center;
