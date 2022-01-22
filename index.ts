@@ -208,7 +208,7 @@ function checkRow(guess: string, word: string) {
       delay
     );
 
-    word = words[count];
+    // word = words[count];
     // addRow();
     return;
   }
@@ -219,6 +219,8 @@ function checkRow(guess: string, word: string) {
     addRow();
     return;
   }
+
+  addRow();
 }
 
 document.addEventListener('keyup', function (event) {
@@ -283,7 +285,7 @@ document.addEventListener('keydown', function (event) {
 
 showSnack(
   `WÖRDL!<br><br>`,
-  `Spielerisch ein oberösterreichisches Kulturgut - die Mundart erhalten. <br>Damit es dann auch in Kollerschlag mir der Wegbeschreibug klappt...`,
+  `Spielerisch ein oberösterreichisches Kulturgut - die Mundart kultivieren. <br>Damit es dann auch in Kollerschlag mir der Wegbeschreibug klappt...`,
   'info',
   500
 );
