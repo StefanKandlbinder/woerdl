@@ -347,7 +347,7 @@ document.addEventListener('keydown', function (event) {
 
 showSnack(
   `WÖRDL!<br><br>`,
-  `Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann überall im "µ/4" mir der Wegbeschreibung klappt...`,
+  `Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...`,
   'info',
   500
 );
