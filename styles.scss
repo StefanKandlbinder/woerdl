@@ -30,13 +30,13 @@ body {
 
 h1 {
   color: rgb(var(--white));
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   position: sticky;
   top: 0;
   background: rgb(var(--background));
   z-index: 10;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .container {
