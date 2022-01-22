@@ -175,12 +175,27 @@ h1 {
     padding: 0 0.25rem;
     box-shadow: none;
     outline: none;
-    background: rgb(var(--key));
+    background-color: rgba(var(--key) / 1);
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 500;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
+    transition: background-color 300ms ease-in-out;
+
+    &.correct {
+      background-color: rgba(var(--success) / 1);
+      color: rgb(var(--white));
+    }
+
+    &.included {
+      background-color: rgba(var(--included) / 1);
+    }
+
+    &.not-included {
+      background-color: rgba(255, 255, 255, 0.3);
+      color: rgb(var(--white));
+    }
   }
 }
 

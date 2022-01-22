@@ -191,14 +191,29 @@ function checkRow(guess: string, word: string) {
 
     if (word[index] === guess[index]) {
       row[index].parentElement.classList.add('correct');
+
+      let element: HTMLButtonElement = keyboardElement.querySelector(
+        `[data-id=${row[index].value}]`
+      );
+      element.classList.add('correct');
     }
 
     if (word.includes(guess[index]) && word[index] !== guess[index]) {
       row[index].parentElement.classList.add('included');
+
+      let element: HTMLButtonElement = keyboardElement.querySelector(
+        `[data-id=${row[index].value}]`
+      );
+      element.classList.add('included');
     }
 
     if (!word.includes(guess[index]) && word[index] !== guess[index]) {
       row[index].parentElement.classList.add('not-included');
+
+      let element: HTMLButtonElement = keyboardElement.querySelector(
+        `[data-id=${row[index].value}]`
+      );
+      element.classList.add('not-included');
     }
   }
 
