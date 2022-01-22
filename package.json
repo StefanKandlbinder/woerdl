@@ -10,7 +10,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "parcel": "^2.2.1"
+    "parcel": "latest",
+    "@parcel/transformer-sass": "latest"
   },
   "keywords": []
 }
