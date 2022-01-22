@@ -8,6 +8,8 @@ let words: string[] = [
   'flesserl',
   'dahoam',
   'schwanan',
+  'sunbeng',
+  'janker',
 ];
 
 let descriptions = new Map<string, string>([
@@ -28,6 +30,14 @@ let descriptions = new Map<string, string>([
   [
     'schwanan',
     'Die Flunkereien rund um Weihnachten und das Christkind sind vorbei. Die Oberösterreicher schwindeln bzw. "schwanan" jetzt höchstens noch, wenn es um das Gewicht auf der Waage geht.',
+  ],
+  [
+    'sunbeng',
+    'Wenn draußen die Sonne scheint, sitzt der OBerösterreicher gern auf seiner Sunbeng. Die "Sunbeng", oder auch Sitzbank, ist ein Ort des sußen Nichtstuns und Innehaltens.',
+  ],
+  [
+    'janker',
+    'Gerade geschnittene, hüftlange Jacke aus gewalkter Schafwolle. Der Janker zählt zur Trachtenmode.',
   ],
 ]);
 
