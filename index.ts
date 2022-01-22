@@ -10,6 +10,7 @@ let words: string[] = [
   'schwanan',
   'sunbeng',
   'janker',
+  'feigeln',
 ];
 
 let descriptions = new Map<string, string>([
@@ -38,6 +39,10 @@ let descriptions = new Map<string, string>([
   [
     'janker',
     'Gerade geschnittene, hüftlange Jacke aus gewalkter Schafwolle. Der Janker zählt zur Trachtenmode.',
+  ],
+  [
+    'feigeln',
+    'Das Wort ist ein Synonym für ärgern, aus der Fassung bringen. Wenn es "feigelt", dann sollte man einen gewissen Sicherheitsabstand hslten.',
   ],
 ]);
 
