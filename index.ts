@@ -14,7 +14,7 @@ let words: string[] = [
 ];
 
 let descriptions = new Map<string, string>([
-  ['goi', 'Unverkennbare Satzendung, die zustimmung vom Zuhörer verlangt.'],
+  ['goi', 'Unverkennbare Satzendung, die Zustimmung vom Zuhörer verlangt.'],
   [
     'neichtl',
     'Ungenaue Zeitangabe: Bei einem "Neichtl", kann es sich sowohl um 5 als auch um 50 Minuten handeln.',
@@ -34,7 +34,7 @@ let descriptions = new Map<string, string>([
   ],
   [
     'sunbeng',
-    'Wenn draußen die Sonne scheint, sitzt der OBerösterreicher gern auf seiner Sunbeng. Die "Sunbeng", oder auch Sitzbank, ist ein Ort des sußen Nichtstuns und Innehaltens.',
+    'Wenn draußen die Sonne scheint, sitzt der Oberösterreicher gern auf seiner Sunbeng. Die "Sunbeng", oder auch Sitzbank, ist ein Ort des süßen Nichtstuns und Innehaltens.',
   ],
   [
     'janker',
@@ -215,7 +215,7 @@ function checkRow(guess: string, word: string) {
 
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
-    showSnack(`💡 "${guess}"`, ` des sogt ma nix! 💡`, 'warning', delay);
+    showSnack(`💡 "${guess}", `, `des sogt ma nix! 💡`, 'warning', delay);
     addRow();
     return;
   }
