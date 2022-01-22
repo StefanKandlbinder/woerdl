@@ -1,6 +1,7 @@
 import './styles.scss';
 
 let grid: HTMLElement | null = document.getElementById('grid');
+let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
 let words: string[] = [
   'goi',
   'neichtl',
@@ -49,6 +50,11 @@ let descriptions = new Map<string, string>([
 let row: any = [];
 let duration: number = 400;
 let count: number = 0;
+let keyboard = [
+  ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p'],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+  ['enter', 'y', 'x', 'c', 'v', 'b', 'n', 'm', '←'],
+];
 
 function fisherYatesShuffle(arr: any) {
   for (var i = arr.length - 1; i > 0; i--) {
@@ -223,6 +229,35 @@ function checkRow(guess: string, word: string) {
   addRow();
 }
 
+function keyboardEnter(e: any) {
+  if (e.data !== null) {
+    // if (id < word.lengt
+    console.log(e.target.dataset.id);
+  }
+}
+
+function createKeyboard(keyboard: any) {
+  for (let i = 0; i < keyboard.length; i++) {
+    let keyRow: HTMLElement = document.createElement('div');
+    keyRow.setAttribute('class', 'keyboard-row');
+
+    for (let j = 0; j < keyboard[i].length; j++) {
+      let key: HTMLButtonElement = document.createElement('button');
+      key.setAttribute('class', 'keyboard-key');
+      key.setAttribute('data-id', keyboard[i][j]);
+      key.addEventListener('click', keyboardEnter);
+      keyboard[i][j] === 'enter' || keyboard[i][j] === '←'
+        ? key.classList.add('col-span-2')
+        : '';
+      key.innerHTML = keyboard[i][j];
+      keyRow.appendChild(key);
+    }
+    keyboardElement.appendChild(keyRow);
+  }
+}
+
+createKeyboard(keyboard);
+
 document.addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -283,11 +318,11 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-showSnack(
+/* showSnack(
   `WÖRDL!<br><br>`,
   `Spielerisch ein oberösterreichisches Kulturgut - die Mundart kultivieren. <br>Damit es dann auch in Kollerschlag mir der Wegbeschreibug klappt...`,
   'info',
   500
-);
+); */
 
 addRow();

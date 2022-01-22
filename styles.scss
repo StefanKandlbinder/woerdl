@@ -6,6 +6,7 @@
   --background: 5 5 5;
   --white: 250 250 250;
   --grid-size: 2.5rem;
+  --key: 170 170 170;
 }
 
 html,
@@ -40,7 +41,9 @@ h1 {
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin: auto;
 }
 
@@ -146,4 +149,39 @@ h1 {
     background: rgba(var(--white) / 0.9);
     color: rgb(var(--background));
   }
+}
+
+.keyboard {
+  position: fixed;
+  bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin: auto;
+
+  &-row {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+
+  &-key {
+    min-width: 1.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    border: 0;
+    padding: 0 0.25rem;
+    box-shadow: none;
+    outline: none;
+    background: rgb(var(--key));
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+}
+
+/* UTILITIES */
+.col-span-2 {
+  grid-column: span 2;
 }
