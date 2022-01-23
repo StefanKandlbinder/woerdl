@@ -189,6 +189,19 @@ function showSnack(
   snack.innerHTML = title + description;
 }
 
+function done() {
+  let zruck: HTMLButtonElement | null =
+    document.querySelector('[data-id="zruck"');
+  zruck!.focus();
+
+  document.onkeydown = function (e) {
+    return false;
+  };
+
+  keyboardElement!.classList.add('keyboard-disabled');
+  grid!.classList.add('grid-disabled');
+}
+
 function checkRow(guess: string, word: string) {
   for (var index = 0; index < word.length; index++) {
     row[index].parentElement.classList.remove(
@@ -246,7 +259,7 @@ function checkRow(guess: string, word: string) {
       delay
     );
 
-    keyboardElement!.classList.add('keyboard-disabled');
+    done();
     return;
   }
 
