@@ -224,6 +224,7 @@ function done() {
   grid!.classList.add('grid-disabled');
 }
 
+// compare the guess to the actual word and give some hints
 function checkRow(guess: string, word: string) {
   for (var index = 0; index < word.length; index++) {
     row[index].parentElement.classList.remove(
@@ -296,6 +297,7 @@ function checkRow(guess: string, word: string) {
   addRow();
 }
 
+// grab your guess and make a word out of it
 function getGuess() {
   let guess: string = '';
   row.forEach((letter: HTMLInputElement) => {
@@ -304,6 +306,7 @@ function getGuess() {
   return guess;
 }
 
+// do the virtual keyboards back button
 function keyboardBack() {
   if (rowPosition >= 1 && rowPosition !== row.length - 1) {
     rowPosition -= 1;
@@ -328,6 +331,7 @@ function keyboardBack() {
   }
 }
 
+// manage the virtual keyboard inputs
 function keyboardEnter(e: any) {
   if (e.data !== null) {
     let character = e.target.dataset.id;
@@ -352,6 +356,7 @@ function keyboardEnter(e: any) {
   }
 }
 
+// create the virtual keyboard depending on the layout
 function createKeyboard(keyboard: any) {
   for (let i = 0; i < keyboard.length; i++) {
     let keyRow: HTMLElement = document.createElement('div');
@@ -374,6 +379,7 @@ function createKeyboard(keyboard: any) {
 
 createKeyboard(keyboard);
 
+// handle the native enter event
 document.addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -389,6 +395,7 @@ document.addEventListener('keyup', function (event) {
   }
 });
 
+// handle tne native back event
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Backspace') {
     event.preventDefault();
