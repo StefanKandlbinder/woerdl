@@ -80,9 +80,13 @@ function fisherYatesShuffle(arr: any) {
 }
 fisherYatesShuffle(words);
 
+// the word to guess
 let word: string = words[0];
+
+// the delay when the character animation is finished
 let delay: number = word.length * duration;
 
+// native keyboard inputs
 function letterEnter(e: any) {
   if (e.data !== null) {
     let element: HTMLInputElement | null = e.target as HTMLInputElement;
@@ -91,6 +95,7 @@ function letterEnter(e: any) {
   }
 }
 
+// add a new row to the grid
 function addRow() {
   grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
 
@@ -128,6 +133,7 @@ function addRow() {
   window.scrollTo(0, document.body.scrollHeight);
 }
 
+// show some information
 function showSnack(
   title: string,
   description: string,
@@ -204,6 +210,7 @@ function showSnack(
   snack.innerHTML = title + description;
 }
 
+// yeeeha, you got it right
 function done() {
   let zruck: HTMLButtonElement | null =
     document.querySelector('[data-id="zruck"');
