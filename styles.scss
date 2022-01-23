@@ -172,6 +172,10 @@ h1 {
     pointer-events: none;
   }
 
+  @media (pointer: fine) {
+    pointer-events: none;
+  }
+
   &-row {
     display: flex;
     margin: 0.25rem 0;
