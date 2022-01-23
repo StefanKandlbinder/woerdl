@@ -266,6 +266,30 @@ function getGuess() {
   return guess;
 }
 
+function keyboardBack() {
+  if (rowPosition >= 1 && rowPosition !== row.length - 1) {
+    rowPosition -= 1;
+    row[rowPosition].value = '';
+    return;
+  }
+  if (
+    rowPosition >= 1 &&
+    rowPosition === row.length - 1 &&
+    row[row.length - 1].value !== ''
+  ) {
+    row[rowPosition].value = '';
+    return;
+  }
+  if (
+    rowPosition >= 1 &&
+    rowPosition === row.length - 1 &&
+    row[row.length - 1].value === ''
+  ) {
+    rowPosition -= 1;
+    row[rowPosition].value = '';
+  }
+}
+
 function keyboardEnter(e: any) {
   if (e.data !== null) {
     let character = e.target.dataset.id;
@@ -273,8 +297,7 @@ function keyboardEnter(e: any) {
 
     switch (character) {
       case 'back':
-        row[rowPosition].value = '';
-        rowPosition >= 1 ? (rowPosition -= 1) : 0;
+        keyboardBack();
         break;
       case 'enter':
         rowPosition === row.length - 1 ? checkRow(getGuess(), word) : null;
