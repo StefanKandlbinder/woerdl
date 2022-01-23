@@ -200,7 +200,7 @@ function checkRow(guess: string, word: string) {
     if (word[index] === guess[index]) {
       row[index].parentElement.classList.add('correct');
 
-      let element: HTMLButtonElement = keyboardElement.querySelector(
+      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
         `[data-id=${row[index].value}]`
       );
       if (element) {
@@ -212,7 +212,7 @@ function checkRow(guess: string, word: string) {
     if (word.includes(guess[index]) && word[index] !== guess[index]) {
       row[index].parentElement.classList.add('included');
 
-      let element: HTMLButtonElement = keyboardElement.querySelector(
+      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
         `[data-id=${row[index].value}]`
       );
 
@@ -225,7 +225,7 @@ function checkRow(guess: string, word: string) {
     if (!word.includes(guess[index]) && word[index] !== guess[index]) {
       row[index].parentElement.classList.add('not-included');
 
-      let element: HTMLButtonElement = keyboardElement.querySelector(
+      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
         `[data-id=${row[index].value}]`
       );
       if (element) {
@@ -246,7 +246,7 @@ function checkRow(guess: string, word: string) {
       delay
     );
 
-    keyboardElement.classList.add('keyboard-disabled');
+    keyboardElement!.classList.add('keyboard-disabled');
     return;
   }
 
@@ -331,7 +331,7 @@ function createKeyboard(keyboard: any) {
       key.innerHTML = keyboard[i][j];
       keyRow.appendChild(key);
     }
-    keyboardElement.appendChild(keyRow);
+    keyboardElement!.appendChild(keyRow);
   }
 }
 
