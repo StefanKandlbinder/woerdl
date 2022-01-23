@@ -250,11 +250,20 @@ function checkRow(guess: string, word: string) {
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
     showSnack(`💡 "${guess}", `, `des warat ma neich! 💡`, 'warning', delay);
+    rowPosition = 0;
     addRow();
     return;
   }
 
   addRow();
+}
+
+function getGuess() {
+  let guess: string = '';
+  row.forEach((letter: HTMLInputElement) => {
+    guess += letter.value;
+  });
+  return guess;
 }
 
 function keyboardEnter(e: any) {
@@ -268,7 +277,7 @@ function keyboardEnter(e: any) {
         rowPosition >= 1 ? (rowPosition -= 1) : 0;
         break;
       case 'enter':
-        console.log('enter');
+        rowPosition === row.length - 1 ? checkRow(getGuess(), word) : null;
         break;
       default:
         row[rowPosition].value = character;
