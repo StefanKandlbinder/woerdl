@@ -48,12 +48,13 @@ let descriptions = new Map<string, string>([
 ]);
 
 let row: any = [];
+let rowPosition: number = 0;
 let duration: number = 400;
 let count: number = 0;
 let keyboard = [
   ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-  ['enter', 'y', 'x', 'c', 'v', 'b', 'n', 'm', '←'],
+  ['enter', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'back'],
 ];
 
 function fisherYatesShuffle(arr: any) {
@@ -258,8 +259,25 @@ function checkRow(guess: string, word: string) {
 
 function keyboardEnter(e: any) {
   if (e.data !== null) {
-    // if (id < word.lengt
-    console.log(e.target.dataset.id);
+    let character = e.target.dataset.id;
+    console.log('before', rowPosition);
+
+    switch (character) {
+      case 'back':
+        row[rowPosition].value = '';
+        rowPosition >= 1 ? (rowPosition -= 1) : 0;
+        break;
+      case 'enter':
+        console.log('enter');
+        break;
+      default:
+        row[rowPosition].value = character;
+        rowPosition < row.length - 1
+          ? (rowPosition += 1)
+          : (rowPosition = row.length - 1);
+        break;
+    }
+    console.log('after', rowPosition);
   }
 }
 
