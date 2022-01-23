@@ -105,7 +105,11 @@ function addRow() {
     row.push(letter);
   }
 
-  if (!virtualKeyboard) row[0].focus();
+  if (!virtualKeyboard) {
+    row[0].focus();
+  } else {
+    rowPosition = 0;
+  }
 
   window.scrollTo(0, document.body.scrollHeight);
 }
