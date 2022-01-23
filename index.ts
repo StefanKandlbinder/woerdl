@@ -312,10 +312,10 @@ function keyboardEnter(e: any) {
     virtualKeyboard = true;
 
     switch (character) {
-      case 'back':
+      case 'zruck':
         keyboardBack();
         break;
-      case 'enter':
+      case 'gemma':
         rowPosition === row.length - 1 ? checkRow(getGuess(), word) : null;
         break;
       default:
