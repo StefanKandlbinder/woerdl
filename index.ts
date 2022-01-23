@@ -248,8 +248,7 @@ function checkRow(guess: string, word: string) {
       delay
     );
 
-    // word = words[count];
-    // addRow();
+    keyboardElement.classList.add('keyboard-disabled');
     return;
   }
 

@@ -168,6 +168,10 @@ h1 {
   background-color: rgb(var(--background));
   // margin: auto;
 
+  &-disabled {
+    pointer-events: none;
+  }
+
   &-row {
     display: flex;
     margin: 0.25rem 0;
