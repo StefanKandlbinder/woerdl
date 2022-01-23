@@ -188,7 +188,7 @@ h1 {
     color: rgb(var(--background));
     margin-left: 0.25rem;
     margin-right: 0.25rem;
-    transition: background-color 300ms ease-in-out, transform 100ms ease-out;
+    transition: background-color 300ms ease-in-out, transform 30ms ease-out;
     transform: scale(1);
 
     &:active {
