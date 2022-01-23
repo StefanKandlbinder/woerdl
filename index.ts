@@ -52,8 +52,8 @@ let rowPosition: number = 0;
 let virtualKeyboard: boolean = false;
 let duration: number = 400;
 let keyboard = [
-  ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p'],
-  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+  ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'ü'],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä'],
   ['gemma', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'zruck'],
 ];
 
