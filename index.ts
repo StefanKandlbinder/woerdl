@@ -51,7 +51,6 @@ let row: any = [];
 let rowPosition: number = 0;
 let virtualKeyboard: boolean = false;
 let duration: number = 400;
-let count: number = 0;
 let keyboard = [
   ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
@@ -239,7 +238,6 @@ function checkRow(guess: string, word: string) {
   // GREAT, yOU DID IT!
   if (guess === word) {
     let description = descriptions.get(word.toLocaleLowerCase());
-    count += 1;
 
     showSnack(
       '🎉 SAUWA! 🎉 <br><br>',
