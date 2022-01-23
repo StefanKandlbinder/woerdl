@@ -192,7 +192,7 @@ function showSnack(
 function done() {
   let zruck: HTMLButtonElement | null =
     document.querySelector('[data-id="zruck"');
-  zruck!.focus();
+  if (zruck) zruck!.focus();
 
   document.onkeydown = function (e) {
     return false;
@@ -316,7 +316,9 @@ function keyboardEnter(e: any) {
         keyboardBack();
         break;
       case 'gemma':
-        rowPosition === row.length - 1 ? checkRow(getGuess(), word) : null;
+        rowPosition === row.length - 1 && row[row.length - 1].value !== ''
+          ? checkRow(getGuess(), word)
+          : null;
         break;
       default:
         row[rowPosition].value = character;
