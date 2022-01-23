@@ -3,8 +3,8 @@ import './styles.scss';
 let grid: HTMLElement | null = document.getElementById('grid');
 let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
 let words: string[] = [
-  'goi',
   'neichtl',
+  'goi',
   'klappal',
   'flesserl',
   'dahoam',
@@ -54,7 +54,7 @@ let duration: number = 400;
 let keyboard = [
   ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-  ['enter', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'back'],
+  ['gemma', 'y', 'x', 'c', 'v', 'b', 'n', 'm', 'zruck'],
 ];
 
 function fisherYatesShuffle(arr: any) {
