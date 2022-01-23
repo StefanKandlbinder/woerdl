@@ -49,6 +49,7 @@ let descriptions = new Map<string, string>([
 
 let row: any = [];
 let rowPosition: number = 0;
+let virtualKeyboard: boolean = false;
 let duration: number = 400;
 let count: number = 0;
 let keyboard = [
@@ -103,7 +104,8 @@ function addRow() {
     grid!.appendChild(letterDiv);
     row.push(letter);
   }
-  row[0].focus();
+
+  if (!virtualKeyboard) row[0].focus();
 
   window.scrollTo(0, document.body.scrollHeight);
 }
@@ -293,7 +295,7 @@ function keyboardBack() {
 function keyboardEnter(e: any) {
   if (e.data !== null) {
     let character = e.target.dataset.id;
-    console.log('before', rowPosition);
+    virtualKeyboard = true;
 
     switch (character) {
       case 'back':
@@ -309,7 +311,6 @@ function keyboardEnter(e: any) {
           : (rowPosition = row.length - 1);
         break;
     }
-    console.log('after', rowPosition);
   }
 }
 
