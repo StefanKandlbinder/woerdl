@@ -1,7 +1,12 @@
 import './styles.scss';
 
+// the characters input grid
 let grid: HTMLElement | null = document.getElementById('grid');
+
+// the virtual keyboard
 let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
+
+// a list if all the words to guess
 let words: string[] = [
   'neichtl',
   'goi',
@@ -14,6 +19,7 @@ let words: string[] = [
   'feigeln',
 ];
 
+// the corresponding descriptions of the words
 let descriptions = new Map<string, string>([
   ['goi', 'Unverkennbare Satzendung, die Zustimmung vom Zuhörer verlangt.'],
   [
@@ -47,10 +53,19 @@ let descriptions = new Map<string, string>([
   ],
 ]);
 
+// the active row
 let row: any = [];
+
+// the position of the active character
 let rowPosition: number = 0;
+
+// is the virtual keyboard in use
 let virtualKeyboard: boolean = false;
+
+// duration of the character animation
 let duration: number = 400;
+
+// keyvoard layout
 let keyboard = [
   ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'ü'],
   ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ö', 'ä'],
