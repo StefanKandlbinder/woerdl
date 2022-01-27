@@ -283,7 +283,7 @@ function checkRow(guess: string, word: string) {
 
     showSnack(
       '🎉 SAUWA! 🎉 <br><br>',
-      `${word}: ${description}`,
+      `${word.toUpperCase()}: ${description}`,
       'success',
       delay
     );
@@ -294,7 +294,12 @@ function checkRow(guess: string, word: string) {
 
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
-    showSnack(`💡 "${guess}", `, `des warat ma neich! 💡`, 'warning', delay);
+    showSnack(
+      `💡 "${guess.toUpperCase()}", `,
+      `des warat ma neich! 💡`,
+      'warning',
+      delay
+    );
     rowPosition = 0;
     addRow();
     return;
