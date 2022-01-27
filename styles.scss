@@ -103,7 +103,7 @@ h1 {
   caret-color: transparent;
 
   &-animation {
-    animation: input 100ms 1 alternate cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: input 100ms 1;
     border-color: rgb(var(--border-active));
   }
 }
@@ -235,14 +235,55 @@ h1 {
 
 /* ANIMATIONS */
 @keyframes input {
-  from {
+  0% {
     transform: scale(1);
+  }
+  10% {
+    transform: scale(1.01);
+  }
+  20% {
+    transform: scale(1.05);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  50% {
+    transform: scale(1.16);
   }
   75% {
     transform: scale(1.2);
   }
-  to {
+  100% {
     transform: scale(1);
+  }
+}
+
+@keyframes nope {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
   }
 }
 
