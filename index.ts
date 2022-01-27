@@ -17,6 +17,7 @@ let words: string[] = [
   'sunbeng',
   'janker',
   'feigeln',
+  'drawig',
 ];
 
 // the corresponding descriptions of the words
@@ -29,7 +30,7 @@ let descriptions = new Map<string, string>([
   ['klappal', 'Sommerliches Schuhwerk oder ganz einfach "Sandalen"'],
   [
     'flesserl',
-    'Das "Flesserl" ist ein oberösterreichisches Traditionsgebäck. Der zu einem Zopf geflochtene Germteig wird mit Mohn und Salz bestreut und knusprig gebacklen.',
+    'Das "Flesserl" ist ein oberösterreichisches Traditionsgebäck. Der zu einem Zopf geflochtene Germteig wird mit Mohn und Salz bestreut und knusprig gebacken.',
   ],
   [
     'dahoam',
@@ -49,7 +50,11 @@ let descriptions = new Map<string, string>([
   ],
   [
     'feigeln',
-    'Das Wort ist ein Synonym für ärgern, aus der Fassung bringen. Wenn es "feigelt", dann sollte man einen gewissen Sicherheitsabstand hslten.',
+    'Das Wort ist ein Synonym für ärgern, aus der Fassung bringen. Wenn es "feigelt", dann sollte man einen gewissen Sicherheitsabstand halten.',
+  ],
+  [
+    'drawig',
+    'Die Zeit vor Weihnachten ist of geprägt Stress und Hektik. Der Oberösterreicher hat es dann of "drawig", also eilig. Gut, wenn das Jahr dann "gmiadlich", also gemütlich beginnt.',
   ],
 ]);
 
