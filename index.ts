@@ -329,9 +329,9 @@ function keyboardBack() {
     rowPosition === row.length - 1 &&
     row[row.length - 1].value === ''
   ) {
-    row[rowPosition].classList.remove('grid-element-input-animation');
     rowPosition -= 1;
     row[rowPosition].value = '';
+    row[rowPosition].classList.remove('grid-element-input-animation');
   }
 }
 
