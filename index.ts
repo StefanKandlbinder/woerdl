@@ -18,6 +18,7 @@ let words: string[] = [
   'janker',
   'feigeln',
   'drawig',
+  'zega',
 ];
 
 // the corresponding descriptions of the words
@@ -55,6 +56,10 @@ let descriptions = new Map<string, string>([
   [
     'drawig',
     'Die Zeit vor Weihnachten ist of geprägt Stress und Hektik. Der Oberösterreicher hat es dann of "drawig", also eilig. Gut, wenn das Jahr dann "gmiadlich", also gemütlich beginnt.',
+  ],
+  [
+    'zega',
+    'Ein Korb oder Eimer wird häufig als "Zega" bezeichnet. Früher wurde der "Zega" oft zum Transport von Erdäpfeln verwendet.',
   ],
 ]);
 
