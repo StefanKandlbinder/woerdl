@@ -43,7 +43,7 @@ let descriptions = new Map<string, string>([
   ],
   [
     'sunbeng',
-    'Wenn draußen die Sonne scheint, sitzt der Oberösterreicher gern auf seiner Sunbeng. Die "Sunbeng", oder auch Sitzbank, ist ein Ort des süßen Nichtstuns und Innehaltens.',
+    'Wenn draußen die Sonne scheint, sitzt der Oberösterreicher gern auf seiner "Sunbeng". Die "Sunbeng", oder auch Sitzbank, ist ein Ort des süßen Nichtstuns und Innehaltens.',
   ],
   [
     'janker',
