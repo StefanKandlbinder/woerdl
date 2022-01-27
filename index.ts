@@ -91,6 +91,7 @@ function letterEnter(e: any) {
   if (e.data !== null) {
     let element: HTMLInputElement | null = e.target as HTMLInputElement;
     let id: number = parseInt(element.getAttribute('data-id') as string, 16);
+    element.classList.add('grid-element-input-animation');
     if (id < word.length - 1) row[id + 1].focus();
   }
 }
@@ -311,6 +312,7 @@ function keyboardBack() {
   if (rowPosition >= 1 && rowPosition !== row.length - 1) {
     rowPosition -= 1;
     row[rowPosition].value = '';
+    row[rowPosition].classList.remove('grid-element-input-animation');
     return;
   }
   if (
@@ -319,6 +321,7 @@ function keyboardBack() {
     row[row.length - 1].value !== ''
   ) {
     row[rowPosition].value = '';
+    row[rowPosition].classList.remove('grid-element-input-animation');
     return;
   }
   if (
@@ -326,6 +329,7 @@ function keyboardBack() {
     rowPosition === row.length - 1 &&
     row[row.length - 1].value === ''
   ) {
+    row[rowPosition].classList.remove('grid-element-input-animation');
     rowPosition -= 1;
     row[rowPosition].value = '';
   }
@@ -347,6 +351,7 @@ function keyboardEnter(e: any) {
           : null;
         break;
       default:
+        row[rowPosition].classList.add('grid-element-input-animation');
         row[rowPosition].value = character;
         rowPosition < row.length - 1
           ? (rowPosition += 1)
@@ -395,7 +400,7 @@ document.addEventListener('keyup', function (event) {
   }
 });
 
-// handle tne native back event
+// handle the native back event
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Backspace') {
     event.preventDefault();
@@ -417,6 +422,7 @@ document.addEventListener('keydown', function (event) {
     if (id < word.length - 1 && id > 0) {
       row[id - 1].focus();
       row[id - 1].value = '';
+      row[id - 1].classList.remove('grid-element-input-animation');
     }
 
     /*
@@ -427,6 +433,7 @@ document.addEventListener('keydown', function (event) {
     if (id === word.length - 1 && row[id].value !== '') {
       row[id].focus();
       row[id].value = '';
+      row[id].classList.remove('grid-element-input-animation');
       return;
     }
 
@@ -437,6 +444,7 @@ document.addEventListener('keydown', function (event) {
     if (id === word.length - 1 && row[id].value === '') {
       row[id - 1].focus();
       row[id - 1].value = '';
+      row[id - 1].classList.remove('grid-element-input-animation');
     }
   }
 });
