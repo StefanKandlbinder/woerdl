@@ -79,7 +79,7 @@ h1 {
 .grid-element-input {
   appearance: none;
   font-family: inherit;
-  background: transparent;
+  background-color: transparent;
   outline: none;
   box-shadow: none;
   border: 1px solid rgb(var(--border));
@@ -118,7 +118,7 @@ h1 {
   left: 0;
   bottom: 0;
   border-radius: 0;
-  transition: background ease-out var(--duration),
+  transition: background-color ease-out var(--duration),
     transform ease-out var(--duration);
   background: rgba(0 0 0 / 0);
   transform: rotateX(90deg) scale(0.5);
@@ -126,21 +126,21 @@ h1 {
 
 .correct {
   .grid-element-animation {
-    background: rgba(var(--success) / 0.95);
+    background-color: rgba(var(--success) / 0.95);
     transform: rotateX(180deg) scale(1);
   }
 }
 
 .included {
   .grid-element-animation {
-    background: rgba(var(--included) / 0.95);
+    background-color: rgba(var(--included) / 0.95);
     transform: rotateX(180deg) scale(1);
   }
 }
 
 .not-included {
   .grid-element-animation {
-    background: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     transform: rotateX(180deg) scale(1);
   }
 }
