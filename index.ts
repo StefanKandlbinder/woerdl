@@ -152,8 +152,6 @@ function addRow() {
 
     const showDuration: number = 280 / word.length;
 
-    console.log(showDuration);
-
     row.map((item: any, index: number) => {
       item.animate(
         [
