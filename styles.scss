@@ -6,6 +6,7 @@
   --background: 5 5 5;
   --white: 250 250 250;
   --grid-size: 2.5rem;
+  --grid-gap: 0.1rem;
   --keyboard-height: 10rem;
   --key: 170 170 170;
   --key-state-delay: 300ms;
@@ -59,7 +60,13 @@ h1 {
   display: grid;
   grid-template-columns: repeat(5, var(--grid-size));
   grid-template-rows: auto;
-  gap: 0.25rem;
+  gap: var(--grid-gap);
+}
+
+@media (min-width: 375px) {
+  :root {
+    --grid-gap: 0.25rem;
+  }
 }
 
 .grid-disabled {
@@ -194,7 +201,7 @@ h1 {
 
   &-row {
     display: flex;
-    margin: 0.25rem 0;
+    margin: var(--grid-gap) 0;
   }
 
   &-key {
@@ -211,8 +218,8 @@ h1 {
     font-size: 0.75rem;
     font-weight: 500;
     color: rgb(var(--background));
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-left: var(--grid-gap);
+    margin-right: var(--grid-gap);
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
       transform 80ms var(--key-state-delay) ease-out,
       color 300ms var(--key-state-delay) ease-out;
