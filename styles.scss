@@ -15,10 +15,23 @@
   --border-active: 80 80 80;
 }
 
-@media (min-width: 375px) {
+@media (min-width: 360px) {
   :root {
     --grid-gap: 0.25rem;
+    --key-width: 1.65rem;
+  }
+}
+
+@media (min-width: 450px) {
+  :root {
+    --grid-gap: 0.5rem;
     --key-width: 2rem;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --key-width: 2.5rem;
   }
 }
 
@@ -204,7 +217,7 @@ h1 {
 
   &-row {
     display: flex;
-    margin: var(--grid-gap) 0;
+    margin: calc(var(--grid-gap) / 2) 0;
   }
 
   &-key {
@@ -221,8 +234,8 @@ h1 {
     font-size: 0.75rem;
     font-weight: 500;
     color: rgb(var(--white));
-    margin-left: var(--grid-gap);
-    margin-right: var(--grid-gap);
+    margin-left: calc(var(--grid-gap) / 2);
+    margin-right: calc(var(--grid-gap) / 2);
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
       transform 80ms var(--key-state-delay) ease-out,
       color 300ms var(--key-state-delay) ease-out;
