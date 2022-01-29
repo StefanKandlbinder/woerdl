@@ -485,7 +485,7 @@ function createKeyboard(keyboard: any) {
       key.setAttribute('class', 'keyboard-key');
       key.setAttribute('data-id', keyboard[i][j]);
       key.addEventListener('click', keyboardEnter);
-      keyboard[i][j] === 'enter' || keyboard[i][j] === '←'
+      keyboard[i][j] === 'gemma' || keyboard[i][j] === 'zruck'
         ? key.classList.add('col-span-2')
         : '';
       key.innerHTML = keyboard[i][j];

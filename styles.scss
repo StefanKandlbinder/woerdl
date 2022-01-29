@@ -217,8 +217,14 @@ h1 {
   }
 
   &-row {
-    display: flex;
-    margin: calc(var(--grid-gap) / 2) 0;
+    display: grid;
+    grid-template-columns: repeat(11, auto);
+    grid-template-rows: auto;
+    gap: var(--grid-gap);
+    margin-top: var(--grid-gap);
+    padding: 0 var(--grid-gap);
+    width: 100%;
+    max-width: 500px;
   }
 
   &-key {
@@ -235,8 +241,6 @@ h1 {
     font-size: 0.75rem;
     font-weight: 500;
     color: rgb(var(--white));
-    margin-left: calc(var(--grid-gap) / 2);
-    margin-right: calc(var(--grid-gap) / 2);
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
       transform 30ms ease-out, color 300ms var(--key-state-delay) ease-out;
     transform: scale(1);
