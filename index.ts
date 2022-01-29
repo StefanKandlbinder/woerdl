@@ -73,7 +73,11 @@ let rowPosition: number = 0;
 let virtualKeyboard: boolean = false;
 
 // duration of the character animation
-let duration: number = 400;
+let duration: number = parseInt(
+  getComputedStyle(document.documentElement)
+    .getPropertyValue('--duration')
+    .split('ms')[0]
+);
 
 // keyvoard layout
 let keyboard = [
@@ -241,6 +245,7 @@ function checkRow(guess: string, word: string) {
     '--key-state-delay',
     `${word.length * duration}ms`
   );
+
   for (var index = 0; index < word.length; index++) {
     row[index].parentElement.classList.remove(
       'correct',

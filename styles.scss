@@ -214,7 +214,8 @@ h1 {
     margin-left: 0.25rem;
     margin-right: 0.25rem;
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
-      transform 80ms var(--key-state-delay) ease-out;
+      transform 80ms var(--key-state-delay) ease-out,
+      color 300ms var(--key-state-delay) ease-out;
     transform: scale(1);
 
     &:active {
