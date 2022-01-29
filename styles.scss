@@ -238,7 +238,7 @@ h1 {
     margin-left: calc(var(--grid-gap) / 2);
     margin-right: calc(var(--grid-gap) / 2);
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
-      transform 80ms ease-out, color 300ms var(--key-state-delay) ease-out;
+      transform 30ms ease-out, color 300ms var(--key-state-delay) ease-out;
     transform: scale(1);
 
     &:active {
