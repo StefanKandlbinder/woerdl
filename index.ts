@@ -568,7 +568,7 @@ document.addEventListener('keydown', function (event) {
 });
 
 showSnack(
-  `<h2 class="mt-0">WÖRDL!</h2>`,
+  ``,
   `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
   <p>Falls das Wort im Mundartwörterbuch vorhanden ist, ändert sich nach jedem Versuch die Farbe der Kacheln.</p>
   <h4>Beispiele:</h4>
@@ -638,7 +638,7 @@ showSnack(
   </div>`,
   'intro',
   500,
-  6.5
+  4.5
 );
 
 addRow();
