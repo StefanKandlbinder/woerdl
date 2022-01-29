@@ -65,6 +65,8 @@ let descriptions = new Map<string, string>([
 
 // the active row
 let row: any = [];
+let addRowTimeout;
+let addRowInit = true;
 
 // the position of the active character
 let rowPosition: number = 0;
@@ -114,38 +116,49 @@ function letterEnter(e: any) {
 function addRow() {
   grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
 
-  row = [];
-  for (let i = 0; i < word.length; i++) {
-    let letterDiv: HTMLElement = document.createElement('div');
-    letterDiv.setAttribute('class', 'grid-element');
+  function doIt() {
+    row = [];
+    for (let i = 0; i < word.length; i++) {
+      let letterDiv: HTMLElement = document.createElement('div');
+      letterDiv.setAttribute('class', 'grid-element');
 
-    let letter: HTMLInputElement = document.createElement('input');
-    letter.setAttribute('class', 'grid-element-input');
-    letter.setAttribute('pattern', '[A-Za-z]');
-    letter.setAttribute('maxlength', '1');
-    letter.setAttribute('type', 'text');
-    letter.setAttribute('data-id', i.toString());
-    letter.addEventListener('input', letterEnter);
+      let letter: HTMLInputElement = document.createElement('input');
+      letter.setAttribute('class', 'grid-element-input');
+      letter.setAttribute('pattern', '[A-Za-z]');
+      letter.setAttribute('maxlength', '1');
+      letter.setAttribute('type', 'text');
+      letter.setAttribute('data-id', i.toString());
+      letter.addEventListener('input', letterEnter);
 
-    let animation: HTMLElement = document.createElement('div');
-    animation.setAttribute('class', 'grid-element-animation');
-    animation.setAttribute(
-      'style',
-      `transition-delay: calc(${duration}ms * ${i})`
-    );
-    letterDiv.append(letter);
-    letterDiv.append(animation);
-    grid!.appendChild(letterDiv);
-    row.push(letter);
+      let animation: HTMLElement = document.createElement('div');
+      animation.setAttribute('class', 'grid-element-animation');
+      animation.setAttribute(
+        'style',
+        `transition-delay: calc(${duration}ms * ${i})`
+      );
+      letterDiv.append(letter);
+      letterDiv.append(animation);
+      grid!.appendChild(letterDiv);
+      row.push(letter);
+    }
+
+    if (!virtualKeyboard) {
+      row[0].focus();
+    } else {
+      rowPosition = 0;
+    }
+
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
-  if (!virtualKeyboard) {
-    row[0].focus();
+  if (!addRowInit) {
+    addRowTimeout = window.setTimeout(() => {
+      doIt();
+    }, word.length * duration);
   } else {
-    rowPosition = 0;
+    addRowInit = false;
+    doIt();
   }
-
-  window.scrollTo(0, document.body.scrollHeight);
 }
 
 // show some information
