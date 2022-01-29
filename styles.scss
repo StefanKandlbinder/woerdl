@@ -8,6 +8,7 @@
   --grid-size: 2.5rem;
   --keyboard-height: 10rem;
   --key: 170 170 170;
+  --key-state-delay: 300ms;
   --border: 60 60 60;
   --border-active: 80 80 80;
 }
@@ -54,7 +55,7 @@ h1 {
   margin: auto;
 }
 
-#grid {
+.grid {
   display: grid;
   grid-template-columns: repeat(5, var(--grid-size));
   grid-template-rows: auto;
@@ -85,7 +86,7 @@ h1 {
   border-radius: 0;
   text-transform: uppercase;
   text-align: center;
-  color: rgb(var(--white));
+  color: rgba(var(--white) / 0.1);
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 0;
@@ -101,10 +102,12 @@ h1 {
   box-sizing: border-box;
   z-index: 100;
   caret-color: transparent;
+  transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
 
   &-animation {
     animation: input 100ms 1;
     border-color: rgb(var(--border-active));
+    color: rgba(var(--white) / 1);
   }
 }
 
@@ -210,7 +213,8 @@ h1 {
     color: rgb(var(--background));
     margin-left: 0.25rem;
     margin-right: 0.25rem;
-    transition: background-color 300ms ease-in-out, transform 80ms ease-out;
+    transition: background-color 300ms var(--key-state-delay) ease-in-out,
+      transform 80ms var(--key-state-delay) ease-out;
     transform: scale(1);
 
     &:active {

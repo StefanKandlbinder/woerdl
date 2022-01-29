@@ -237,6 +237,10 @@ function done() {
 
 // compare the guess to the actual word and give some hints
 function checkRow(guess: string, word: string) {
+  document.documentElement.style.setProperty(
+    '--key-state-delay',
+    `${word.length * duration}ms`
+  );
   for (var index = 0; index < word.length; index++) {
     row[index].parentElement.classList.remove(
       'correct',
