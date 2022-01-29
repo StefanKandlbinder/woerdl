@@ -14,14 +14,14 @@ let words: string[] = [
   'neichtl',
   'klappal',
   'sunbeng',
-  /*'goi',
+  'goi',
   'schwanan',
   'flesserl',
   'dahoam',
   'janker',
   'feigeln',
   'drawig',
-  'zega', */
+  'zega',
 ];
 
 // the corresponding descriptions of the words
