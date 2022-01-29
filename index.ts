@@ -12,16 +12,16 @@ let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
 // a list if all the words to guess
 let words: string[] = [
   'neichtl',
-  'goi',
   'klappal',
+  'sunbeng',
+  /*'goi',
+  'schwanan',
   'flesserl',
   'dahoam',
-  'schwanan',
-  'sunbeng',
   'janker',
   'feigeln',
   'drawig',
-  'zega',
+  'zega', */
 ];
 
 // the corresponding descriptions of the words
@@ -372,7 +372,11 @@ function checkRow(guess: string, word: string) {
     return;
   }
 
-  addRow();
+  if (words.includes(guess.toLocaleLowerCase())) {
+    setLetterState();
+    rowPosition = 0;
+    addRow();
+  }
 }
 
 // grab your guess and make a word out of it
