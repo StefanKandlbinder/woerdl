@@ -164,9 +164,11 @@ function addRow() {
     addRowTimeout = window.setTimeout(() => {
       doIt();
     }, word.length * duration);
+    return;
   } else {
     addRowInit = false;
     doIt();
+    return;
   }
 }
 
