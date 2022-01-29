@@ -8,7 +8,8 @@
   --grid-size: 2.5rem;
   --grid-gap: 0.15rem;
   --keyboard-height: 10rem;
-  --key: 170 170 170;
+  --key: 150 150 150;
+  --key-width: 1.5rem;
   --key-state-delay: 300ms;
   --border: 60 60 60;
   --border-active: 80 80 80;
@@ -17,6 +18,7 @@
 @media (min-width: 375px) {
   :root {
     --grid-gap: 0.25rem;
+    --key-width: 2rem;
   }
 }
 
@@ -207,7 +209,7 @@ h1 {
 
   &-key {
     touch-action: manipulation;
-    min-width: 1.5rem;
+    min-width: var(--key-width);
     height: 2.5rem;
     border-radius: 0.25rem;
     border: 0;
@@ -218,7 +220,7 @@ h1 {
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 500;
-    color: rgb(var(--background));
+    color: rgb(var(--white));
     margin-left: var(--grid-gap);
     margin-right: var(--grid-gap);
     transition: background-color 300ms var(--key-state-delay) ease-in-out,
