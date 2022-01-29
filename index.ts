@@ -353,7 +353,7 @@ function checkRow(guess: string, word: string) {
         },
       ],
       {
-        duration: 220,
+        duration: 250,
         iterations: 1,
         easing: 'ease-in-out',
         fill: 'both',
