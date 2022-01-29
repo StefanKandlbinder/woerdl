@@ -58,7 +58,7 @@ let descriptions = new Map<string, string>([
   ],
   [
     'drawig',
-    'Die Zeit vor Weihnachten ist of geprägt Stress und Hektik. Der Oberösterreicher hat es dann of "drawig", also eilig. Gut, wenn das Jahr dann "gmiadlich", also gemütlich beginnt.',
+    'Die Zeit vor Weihnachten ist of geprägt Stress und Hektik. Der Oberösterreicher hat es dann of "drawig", also eilig. Gut, wenn das Jahr dann "gmiadli", also gemütlich beginnt.',
   ],
   [
     'zega',
