@@ -172,12 +172,12 @@ h1 {
 
   &-success {
     white-space: normal;
-    background: rgba(var(--success) / 0.9);
+    background: rgba(var(--success) / 0.95);
   }
 
   &-info {
     white-space: normal;
-    background: rgba(var(--white) / 0.9);
+    background: rgba(var(--white) / 0.95);
     color: rgb(var(--background));
   }
 }
