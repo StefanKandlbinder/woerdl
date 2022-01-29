@@ -357,7 +357,7 @@ function checkRow(guess: string, word: string) {
         iterations: 1,
         easing: 'ease-in-out',
         fill: 'both',
-        delay: 0,
+        delay: word.length * duration,
       }
     );
 
@@ -365,10 +365,11 @@ function checkRow(guess: string, word: string) {
       `💡 "${guess.toUpperCase()}", `,
       `des warat ma neich! 💡`,
       'warning',
-      0
+      word.length * duration
     );
-    // rowPosition = 0;
-    // addRow();
+    setLetterState();
+    rowPosition = 0;
+    addRow();
     return;
   }
 
