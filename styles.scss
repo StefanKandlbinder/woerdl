@@ -67,6 +67,7 @@ h1 {
   grid-template-columns: repeat(5, var(--grid-size));
   grid-template-rows: auto;
   gap: var(--grid-gap);
+  margin-top: var(--grid-gap);
 }
 
 .grid-disabled {
@@ -278,7 +279,7 @@ h1 {
     transform: rotateZ(0);
   }
   15% {
-    transform: rotateZ(-15deg);
+    transform: rotateZ(-12deg);
   }
   20% {
     transform: rotateZ(10deg);

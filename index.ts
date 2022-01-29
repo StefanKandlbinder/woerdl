@@ -1,7 +1,10 @@
 import './styles.scss';
 
+// the surrounding container
+let container: HTMLElement | null = document.getElementById('container');
+
 // the characters input grid
-let grid: HTMLElement | null = document.getElementById('grid');
+let grid: any | null;
 
 // the virtual keyboard
 let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
@@ -114,6 +117,10 @@ function letterEnter(e: any) {
 
 // add a new row to the grid
 function addRow() {
+  // grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
+
+  grid = document.createElement('div');
+  grid.setAttribute('class', 'grid');
   grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
 
   function doIt() {
@@ -141,6 +148,8 @@ function addRow() {
       grid!.appendChild(letterDiv);
       row.push(letter);
     }
+
+    container!.appendChild(grid);
 
     if (!virtualKeyboard) {
       row[0].focus();
@@ -259,53 +268,57 @@ function checkRow(guess: string, word: string) {
     `${word.length * duration}ms`
   );
 
-  for (var index = 0; index < word.length; index++) {
-    row[index].parentElement.classList.remove(
-      'correct',
-      'included',
-      'not-included'
-    );
-
-    if (word[index] === guess[index]) {
-      row[index].parentElement.classList.add('correct');
-
-      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-        `[data-id=${row[index].value}]`
+  function setLetterState() {
+    for (var index = 0; index < word.length; index++) {
+      row[index].parentElement.classList.remove(
+        'correct',
+        'included',
+        'not-included'
       );
-      if (element) {
-        element.classList.remove('correct', 'included', 'not-included');
-        element.classList.add('correct');
+
+      if (word[index] === guess[index]) {
+        row[index].parentElement.classList.add('correct');
+
+        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
+          `[data-id=${row[index].value}]`
+        );
+        if (element) {
+          element.classList.remove('correct', 'included', 'not-included');
+          element.classList.add('correct');
+        }
       }
-    }
 
-    if (word.includes(guess[index]) && word[index] !== guess[index]) {
-      row[index].parentElement.classList.add('included');
+      if (word.includes(guess[index]) && word[index] !== guess[index]) {
+        row[index].parentElement.classList.add('included');
 
-      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-        `[data-id=${row[index].value}]`
-      );
+        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
+          `[data-id=${row[index].value}]`
+        );
 
-      if (element) {
-        element.classList.remove('correct', 'included', 'not-included');
-        element.classList.add('included');
+        if (element) {
+          element.classList.remove('correct', 'included', 'not-included');
+          element.classList.add('included');
+        }
       }
-    }
 
-    if (!word.includes(guess[index]) && word[index] !== guess[index]) {
-      row[index].parentElement.classList.add('not-included');
+      if (!word.includes(guess[index]) && word[index] !== guess[index]) {
+        row[index].parentElement.classList.add('not-included');
 
-      let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-        `[data-id=${row[index].value}]`
-      );
-      if (element) {
-        element.classList.remove('correct', 'included', 'not-included');
-        element.classList.add('not-included');
+        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
+          `[data-id=${row[index].value}]`
+        );
+        if (element) {
+          element.classList.remove('correct', 'included', 'not-included');
+          element.classList.add('not-included');
+        }
       }
     }
   }
 
   // GREAT, yOU DID IT!
   if (guess === word) {
+    setLetterState();
+
     let description = descriptions.get(word.toLocaleLowerCase());
 
     showSnack(
@@ -321,14 +334,41 @@ function checkRow(guess: string, word: string) {
 
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
+    grid.animate(
+      [
+        {
+          transform: 'translateX(0)',
+        },
+        {
+          transform: 'translateX(-3%)',
+        },
+        {
+          transform: 'translateX(3%)',
+        },
+        {
+          transform: 'translateX(-3%)',
+        },
+        {
+          transform: 'translateX(0)',
+        },
+      ],
+      {
+        duration: 220,
+        iterations: 1,
+        easing: 'ease-in-out',
+        fill: 'both',
+        delay: 0,
+      }
+    );
+
     showSnack(
       `💡 "${guess.toUpperCase()}", `,
       `des warat ma neich! 💡`,
       'warning',
-      delay
+      0
     );
-    rowPosition = 0;
-    addRow();
+    // rowPosition = 0;
+    // addRow();
     return;
   }
 
