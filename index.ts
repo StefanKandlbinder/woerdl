@@ -122,6 +122,7 @@ function addRow() {
   grid = document.createElement('div');
   grid.setAttribute('class', 'grid');
   grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
+  container!.appendChild(grid);
 
   function doIt() {
     row = [];
@@ -149,7 +150,35 @@ function addRow() {
       row.push(letter);
     }
 
-    container!.appendChild(grid);
+    const showDuration: number = 280 / word.length;
+
+    console.log(showDuration);
+
+    row.map((item: any, index: number) => {
+      item.animate(
+        [
+          {
+            transform: 'scale(0)',
+            opacity: '0',
+          },
+          {
+            transform: 'scale(1.3)',
+            opacity: '1',
+          },
+          {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+        ],
+        {
+          duration: showDuration,
+          iterations: 1,
+          easing: 'ease-in-out',
+          fill: 'both',
+          delay: index * showDuration,
+        }
+      );
+    });
 
     if (!virtualKeyboard) {
       row[0].focus();

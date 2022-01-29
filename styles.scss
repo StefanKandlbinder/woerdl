@@ -97,6 +97,7 @@ h1 {
   width: var(--grid-size);
   perspective: 1000px;
   transform-origin: center;
+  // transform: scale(0);
 }
 
 .grid-element-input {
