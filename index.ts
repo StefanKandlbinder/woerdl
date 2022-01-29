@@ -634,7 +634,7 @@ showSnack(
       <span class="grid-element-input grid-element-input-animation">G</span>
     </div>
   </div>
-  <p>Der Buchstabe D ist im Wort nich enthalten.</p>
+  <p>Der Buchstabe D ist im Wort nicht enthalten.</p>
   </div>`,
   'intro',
   500,
