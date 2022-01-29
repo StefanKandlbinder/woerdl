@@ -2,6 +2,7 @@
   --duration: 400ms;
   --success: 12 78 12;
   --included: 159 159 5;
+  --not-included: 255 255 255;
   --warning: var(--included);
   --background: 5 5 5;
   --white: 250 250 250;
@@ -69,6 +70,10 @@ h1 {
   font-size: 1.5rem;
 }
 
+hr {
+  margin: 0.75rem 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -83,69 +88,76 @@ h1 {
   grid-template-rows: auto;
   gap: var(--grid-gap);
   margin-top: var(--grid-gap);
-}
 
-.grid-disabled {
-  .grid-element-input {
-    pointer-events: none;
+  &-disabled {
+    .grid-element-input {
+      pointer-events: none;
+    }
   }
-}
 
-.grid-element {
-  position: relative;
-  height: var(--grid-size);
-  width: var(--grid-size);
-  perspective: 1000px;
-  transform-origin: center;
-  // transform: scale(0);
-}
-
-.grid-element-input {
-  appearance: none;
-  font-family: inherit;
-  background-color: transparent;
-  outline: none;
-  box-shadow: none;
-  border: 1px solid rgb(var(--border));
-  border-radius: 0;
-  text-transform: uppercase;
-  text-align: center;
-  color: rgba(var(--white) / 0.1);
-  font-size: 1.2rem;
-  font-weight: bold;
-  line-height: 0;
-  letter-spacing: 0;
-  // vertical-align: baseline;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: var(--grid-size);
-  height: var(--grid-size);
-  box-sizing: border-box;
-  z-index: 100;
-  caret-color: transparent;
-  transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
-
-  &-animation {
-    animation: input 100ms 1;
-    border-color: rgb(var(--border-active));
-    color: rgba(var(--white) / 1);
+  &-element {
+    position: relative;
+    height: var(--grid-size);
+    width: var(--grid-size);
+    perspective: 1000px;
+    transform-origin: center;
+    // transform: scale(0);
   }
-}
 
-.grid-element-animation {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  border-radius: 0;
-  transition: background-color ease-out var(--duration),
-    transform ease-out var(--duration);
-  background: rgba(0 0 0 / 0);
-  transform: rotateX(90deg) scale(0.5);
+  &-element-input {
+    appearance: none;
+    display: inline-block;
+    font-family: inherit;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid rgb(var(--border));
+    border-radius: 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: rgba(var(--white) / 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: var(--grid-size);
+    letter-spacing: 0;
+    // vertical-align: baseline;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: var(--grid-size);
+    height: var(--grid-size);
+    box-sizing: border-box;
+    z-index: 100;
+    caret-color: transparent;
+    transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
+
+    &-animation {
+      animation: input 100ms 1;
+      border-color: rgb(var(--border-active));
+      color: rgba(var(--white) / 1);
+    }
+  }
+
+  &-element-animation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 0;
+    transition: background-color ease-out var(--duration),
+      transform ease-out var(--duration);
+    background: rgba(0 0 0 / 0);
+    transform: rotateX(90deg) scale(0.5);
+  }
+
+  &-example {
+    .grid-element-input {
+      color: rgb(var(--background));
+    }
+  }
 }
 
 .correct {
@@ -183,6 +195,9 @@ h1 {
   white-space: nowrap;
   max-width: 75rem;
   min-width: 70vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 20;
 
   &-success {
     white-space: normal;
@@ -193,6 +208,12 @@ h1 {
     white-space: normal;
     background: rgba(var(--white) / 0.95);
     color: rgb(var(--background));
+  }
+
+  &-intro {
+    white-space: normal;
+    background: rgba(var(--background) / 0.95);
+    color: rgb(var(--white));
   }
 }
 
@@ -321,4 +342,16 @@ h1 {
 /* UTILITIES */
 .col-span-2 {
   grid-column: span 2;
+}
+
+.text-sm {
+  font-size: 0.85rem;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.mt-0 {
+  margin-top: 0;
 }

@@ -204,13 +204,14 @@ function showSnack(
   title: string,
   description: string,
   type: string,
-  delay: number
+  delay: number,
+  readingMulti: number
 ) {
   let snack: HTMLElement = document.getElementById('snack') as HTMLElement;
   snack.innerHTML = '';
 
   // delay the hide animation depending on the length of the description
-  let readingTime: number = description!.length * 50;
+  let readingTime: number = description!.length * readingMulti;
 
   switch (type) {
     case 'success':
@@ -224,6 +225,10 @@ function showSnack(
     case 'info':
       snack.className = '';
       snack.classList.add('snack', 'snack-info');
+      break;
+    case 'intro':
+      snack.className = '';
+      snack.classList.add('snack', 'snack-intro');
       break;
   }
 
@@ -354,7 +359,8 @@ function checkRow(guess: string, word: string) {
       '🎉 SAUWA! 🎉 <br><br>',
       `${word.toUpperCase()}: ${description}`,
       'success',
-      delay
+      delay,
+      50
     );
 
     done();
@@ -394,7 +400,8 @@ function checkRow(guess: string, word: string) {
       `💡 "${guess.toUpperCase()}", `,
       `des warat ma neich! 💡`,
       'warning',
-      word.length * duration
+      word.length * duration,
+      50
     );
     setLetterState();
     rowPosition = 0;
@@ -561,10 +568,77 @@ document.addEventListener('keydown', function (event) {
 });
 
 showSnack(
-  `WÖRDL!<br><br>`,
-  `Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...`,
-  'info',
-  500
+  `<h2 class="mt-0">WÖRDL!</h2>`,
+  `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
+  <p>Bei jedem Versuch ändert sich die Farbe der Kacheln, um dir das Leben beim nächsten Mal ein bisschen leichter zu machen.</p>
+  <h4>Beispiele:</h4>
+  <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">K</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation" style="background-color: rgb(var(--included))">I</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">W</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">A</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">R</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">A</span>
+    </div>
+  </div>
+  <p>Der Buchstabe I ist im Wort enthalten, aber an der falschen Stelle.</p>
+  <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">D</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">A</span>
+    </div>
+    <div class="grid-element correct">
+      <span class="grid-element-input grid-element-input-animation" style="background-color: rgb(var(--success))">H</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">O</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">A</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">M</span>
+    </div>
+  </div>
+  <p>Der Buchstabe H ist im Wort enthalten und an der richtigen Stelle.</p>
+  <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation" style="background-color: rgba(var(--not-included) / 0.3)">D</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">R</span>
+    </div>
+    <div class="grid-element correct">
+      <span class="grid-element-input grid-element-input-animation">A</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">W</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">I</span>
+    </div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-input-animation">G</span>
+    </div>
+  </div>
+  <p>Der Buchstabe D ist im Wort nich enthalten.</p>
+  </div>`,
+  'intro',
+  500,
+  6
 );
 
 addRow();
