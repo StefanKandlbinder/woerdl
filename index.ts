@@ -161,6 +161,14 @@ function addRow() {
       );
     });
 
+    Promise.all(
+      row[row.length - 1].getAnimations().map(function (animation: any) {
+        return animation.finished;
+      })
+    ).then(function () {
+      addRowInit = false;
+    });
+
     rowPosition = 0;
 
     window.scrollTo(0, document.body.scrollHeight);
@@ -172,7 +180,6 @@ function addRow() {
     }, word.length * duration);
     return;
   } else {
-    addRowInit = false;
     doIt();
     return;
   }
