@@ -101,12 +101,10 @@ hr {
     width: var(--grid-size);
     perspective: 1000px;
     transform-origin: center;
-    // transform: scale(0);
   }
 
   &-element-input {
     appearance: none;
-    display: inline-block;
     font-family: inherit;
     background-color: transparent;
     outline: none;
@@ -134,7 +132,10 @@ hr {
     transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
 
     &-animation {
-      animation: input 100ms 1;
+      animation-name: input;
+      animation-duration: 100ms;
+      // animation-fill-mode: both;
+      animation-iteration-count: 1;
       border-color: rgb(var(--border-active));
       color: rgba(var(--white) / 1);
     }

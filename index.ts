@@ -4,7 +4,7 @@ import './styles.scss';
 let container: HTMLElement | null = document.getElementById('container');
 
 // the characters input grid
-let grid: any | null;
+let grid: HTMLElement | null;
 
 // the virtual keyboard
 let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
@@ -110,8 +110,8 @@ function letterEnter(e: any) {
   if (e.data !== null) {
     let element: HTMLInputElement | null = e.target as HTMLInputElement;
     let id: number = parseInt(element.getAttribute('data-id') as string, 16);
-    element.classList.add('grid-element-input-animation');
     if (id < word.length - 1) row[id + 1].focus();
+    element.classList.add('grid-element-input-animation');
   }
 }
 
@@ -156,8 +156,8 @@ function addRow() {
       item.animate(
         [
           {
-            transform: 'scale(0)',
-            opacity: '0',
+            transform: 'scale(0.1)',
+            opacity: '0.1',
           },
           {
             transform: 'scale(1.3)',
@@ -172,7 +172,7 @@ function addRow() {
           duration: showDuration,
           iterations: 1,
           easing: 'ease-in-out',
-          fill: 'both',
+          fill: 'backwards',
           delay: index * showDuration,
         }
       );
@@ -369,7 +369,7 @@ function checkRow(guess: string, word: string) {
 
   // MAKES IT a LITTLE BIT EASIER
   if (!words.includes(guess.toLocaleLowerCase())) {
-    grid.animate(
+    grid!.animate(
       [
         {
           transform: 'translateX(0)',
@@ -429,8 +429,8 @@ function getGuess() {
 function keyboardBack() {
   if (rowPosition >= 1 && rowPosition !== row.length - 1) {
     rowPosition -= 1;
-    row[rowPosition].value = '';
     row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].value = '';
     return;
   }
   if (
@@ -438,8 +438,8 @@ function keyboardBack() {
     rowPosition === row.length - 1 &&
     row[row.length - 1].value !== ''
   ) {
-    row[rowPosition].value = '';
     row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].value = '';
     return;
   }
   if (
@@ -448,8 +448,8 @@ function keyboardBack() {
     row[row.length - 1].value === ''
   ) {
     rowPosition -= 1;
-    row[rowPosition].value = '';
     row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].value = '';
   }
 }
 
@@ -567,7 +567,7 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-showSnack(
+/* showSnack(
   ``,
   `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
   <p>Falls das Wort im Mundartwörterbuch vorhanden ist, ändert sich nach jedem Versuch die Farbe der Kacheln.</p>
@@ -639,6 +639,6 @@ showSnack(
   'intro',
   500,
   4.5
-);
+); */
 
 addRow();
