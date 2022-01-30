@@ -567,7 +567,7 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
-/* showSnack(
+showSnack(
   ``,
   `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
   <p>Falls das Wort im Mundartwörterbuch vorhanden ist, ändert sich nach jedem Versuch die Farbe der Kacheln.</p>
@@ -639,6 +639,6 @@ document.addEventListener('keydown', function (event) {
   'intro',
   500,
   4.5
-); */
+);
 
 addRow();
