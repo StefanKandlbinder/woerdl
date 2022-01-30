@@ -102,20 +102,8 @@ let word: string = words[0];
 // the delay when the character animation is finished
 let delay: number = word.length * duration;
 
-// native keyboard inputs
-function letterEnter(e: any) {
-  if (e.data !== null) {
-    let element: HTMLInputElement | null = e.target as HTMLInputElement;
-    let id: number = parseInt(element.getAttribute('data-id') as string, 16);
-    if (id < word.length - 1) row[id + 1].focus();
-    element.classList.add('grid-element-input-animation');
-  }
-}
-
 // add a new row to the grid
 function addRow() {
-  // grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
-
   grid = document.createElement('div');
   grid.setAttribute('class', 'grid');
   grid!.style.gridTemplateColumns = `repeat(${word.length}, 2.5rem)`;
@@ -130,7 +118,6 @@ function addRow() {
       let letter: HTMLElement = document.createElement('div');
       letter.setAttribute('class', 'grid-element-input');
       letter.setAttribute('data-id', i.toString());
-      // letter.addEventListener('input', letterEnter);
 
       let animation: HTMLElement = document.createElement('div');
       animation.setAttribute('class', 'grid-element-animation');
@@ -138,8 +125,10 @@ function addRow() {
         'style',
         `transition-delay: calc(${duration}ms * ${i})`
       );
+
       letterDiv.append(letter);
       letterDiv.append(animation);
+
       grid!.appendChild(letterDiv);
       row.push(letter);
     }
