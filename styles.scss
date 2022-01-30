@@ -264,6 +264,12 @@ hr {
       transform 30ms ease-out, color 300ms var(--key-state-delay) ease-out;
     transform: scale(1);
 
+    @media (pointer: fine) {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     &:active {
       transform: scale(1.2);
     }
