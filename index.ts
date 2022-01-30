@@ -304,7 +304,7 @@ function checkRow(guess: string, word: string) {
         row[index].parentElement.classList.add('correct');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].value}]`
+          `[data-id=${row[index].innerHTML}]`
         );
         if (element) {
           element.classList.remove('correct', 'included', 'not-included');
@@ -316,7 +316,7 @@ function checkRow(guess: string, word: string) {
         row[index].parentElement.classList.add('included');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].value}]`
+          `[data-id=${row[index].innerHTML}]`
         );
 
         if (element) {
@@ -329,7 +329,7 @@ function checkRow(guess: string, word: string) {
         row[index].parentElement.classList.add('not-included');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].value}]`
+          `[data-id=${row[index].innerHTML}]`
         );
         if (element) {
           element.classList.remove('correct', 'included', 'not-included');
