@@ -234,10 +234,6 @@ hr {
     pointer-events: none;
   }
 
-  @media (pointer: fine) {
-    pointer-events: none;
-  }
-
   &-row {
     display: grid;
     grid-template-columns: repeat(11, auto);

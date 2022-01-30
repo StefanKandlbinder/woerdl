@@ -74,9 +74,6 @@ let addRowInit = true;
 // the position of the active character
 let rowPosition: number = 0;
 
-// is the virtual keyboard in use
-let virtualKeyboard: boolean = false;
-
 // duration of the character animation
 let duration: number = parseInt(
   getComputedStyle(document.documentElement)
@@ -130,13 +127,10 @@ function addRow() {
       let letterDiv: HTMLElement = document.createElement('div');
       letterDiv.setAttribute('class', 'grid-element');
 
-      let letter: HTMLInputElement = document.createElement('input');
+      let letter: HTMLElement = document.createElement('div');
       letter.setAttribute('class', 'grid-element-input');
-      letter.setAttribute('pattern', '[A-Za-z]');
-      letter.setAttribute('maxlength', '1');
-      letter.setAttribute('type', 'text');
       letter.setAttribute('data-id', i.toString());
-      letter.addEventListener('input', letterEnter);
+      // letter.addEventListener('input', letterEnter);
 
       let animation: HTMLElement = document.createElement('div');
       animation.setAttribute('class', 'grid-element-animation');
@@ -178,11 +172,7 @@ function addRow() {
       );
     });
 
-    if (!virtualKeyboard) {
-      row[0].focus();
-    } else {
-      rowPosition = 0;
-    }
+    rowPosition = 0;
 
     window.scrollTo(0, document.body.scrollHeight);
   }
@@ -419,8 +409,8 @@ function checkRow(guess: string, word: string) {
 // grab your guess and make a word out of it
 function getGuess() {
   let guess: string = '';
-  row.forEach((letter: HTMLInputElement) => {
-    guess += letter.value;
+  row.forEach((letter: HTMLElement) => {
+    guess += letter.innerHTML;
   });
   return guess;
 }
@@ -430,47 +420,46 @@ function keyboardBack() {
   if (rowPosition >= 1 && rowPosition !== row.length - 1) {
     rowPosition -= 1;
     row[rowPosition].classList.remove('grid-element-input-animation');
-    row[rowPosition].value = '';
+    row[rowPosition].innerHTML = '';
     return;
   }
   if (
     rowPosition >= 1 &&
     rowPosition === row.length - 1 &&
-    row[row.length - 1].value !== ''
+    row[row.length - 1].innerHTML !== ''
   ) {
     row[rowPosition].classList.remove('grid-element-input-animation');
-    row[rowPosition].value = '';
+    row[rowPosition].innerHTML = '';
     return;
   }
   if (
     rowPosition >= 1 &&
     rowPosition === row.length - 1 &&
-    row[row.length - 1].value === ''
+    row[row.length - 1].innerHTML === ''
   ) {
     rowPosition -= 1;
     row[rowPosition].classList.remove('grid-element-input-animation');
-    row[rowPosition].value = '';
+    row[rowPosition].innerHTML = '';
   }
 }
 
 // manage the virtual keyboard inputs
-function keyboardEnter(e: any) {
-  if (e.data !== null) {
-    let character = e.target.dataset.id;
-    virtualKeyboard = true;
-
+function keyboardEnter(character: string) {
+  if (character !== '') {
     switch (character) {
       case 'zruck':
+      case 'Backspace':
         keyboardBack();
         break;
       case 'gemma':
-        rowPosition === row.length - 1 && row[row.length - 1].value !== ''
+      case 'Enter':
+        rowPosition === row.length - 1 && row[row.length - 1].innerHTML !== ''
           ? checkRow(getGuess(), word)
           : null;
         break;
       default:
         row[rowPosition].classList.add('grid-element-input-animation');
-        row[rowPosition].value = character;
+        row[rowPosition].innerHTML = character;
         rowPosition < row.length - 1
           ? (rowPosition += 1)
           : (rowPosition = row.length - 1);
@@ -489,7 +478,9 @@ function createKeyboard(keyboard: any) {
       let key: HTMLButtonElement = document.createElement('button');
       key.setAttribute('class', 'keyboard-key');
       key.setAttribute('data-id', keyboard[i][j]);
-      key.addEventListener('click', keyboardEnter);
+      key.addEventListener('click', () => {
+        keyboardEnter(keyboard[i][j]);
+      });
       keyboard[i][j] === 'gemma' || keyboard[i][j] === 'zruck'
         ? key.classList.add('col-span-2')
         : '';
@@ -504,67 +495,7 @@ createKeyboard(keyboard);
 
 // handle the native enter event
 document.addEventListener('keyup', function (event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    let guess = '';
-
-    row.forEach((letter: HTMLInputElement) => {
-      guess += letter.value;
-    });
-
-    if (guess.length === word.length && guess) {
-      checkRow(guess.toUpperCase(), word.toUpperCase());
-    }
-  }
-});
-
-// handle the native back event
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Backspace') {
-    event.preventDefault();
-
-    // grab the element which is in focus
-    let activeElement: HTMLInputElement | null =
-      document.activeElement as HTMLInputElement;
-
-    // get the id of the element in focus
-    let id: number = parseInt(
-      activeElement.getAttribute('data-id') as string,
-      16
-    );
-
-    /*
-     * if i am an entry and not the last
-     * focus and clear the previous one
-     */
-    if (id < word.length - 1 && id > 0) {
-      row[id - 1].focus();
-      row[id - 1].value = '';
-      row[id - 1].classList.remove('grid-element-input-animation');
-    }
-
-    /*
-     * if i am the last and not empty => keep the focus
-     * and clear me
-     */
-
-    if (id === word.length - 1 && row[id].value !== '') {
-      row[id].focus();
-      row[id].value = '';
-      row[id].classList.remove('grid-element-input-animation');
-      return;
-    }
-
-    /*
-     * if i am the last and empty => focus
-     * and clear my brother on the left
-     */
-    if (id === word.length - 1 && row[id].value === '') {
-      row[id - 1].focus();
-      row[id - 1].value = '';
-      row[id - 1].classList.remove('grid-element-input-animation');
-    }
-  }
+  keyboardEnter(event.key);
 });
 
 showSnack(
