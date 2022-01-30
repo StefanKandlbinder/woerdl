@@ -547,7 +547,7 @@ showSnack(
   <p>Der Buchstabe H ist im Wort enthalten und an der richtigen Stelle.</p>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation" style="background-color: rgba(var(--not-included) / 0.3)">D</span>
+      <span class="grid-element-input grid-element-input-animation" style="background-color: rgba(var(--not-included) / 1)">D</span>
     </div>
     <div class="grid-element">
       <span class="grid-element-input grid-element-input-animation">R</span>
