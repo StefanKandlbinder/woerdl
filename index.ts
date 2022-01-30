@@ -3,7 +3,7 @@ import './styles.scss';
 // the surrounding container
 let container: HTMLElement | null = document.getElementById('container');
 
-// the characters input grid
+// the characters grid
 let grid: HTMLElement | null;
 
 // the virtual keyboard
@@ -68,7 +68,7 @@ let descriptions = new Map<string, string>([
 
 // the active row
 let row: any = [];
-let addRowTimeout;
+let addRowTimeout = null;
 let addRowInit = true;
 
 // the position of the active character
