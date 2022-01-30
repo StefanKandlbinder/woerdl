@@ -570,7 +570,7 @@ document.addEventListener('keydown', function (event) {
 showSnack(
   ``,
   `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
-  <p>Falls das Wort im Mundartwörterbuch vorhanden ist, ändert sich nach jedem Versuch die Farbe der Kacheln.</p>
+  <p>Nach jedem Versuch ändert sich die Farbe der Kacheln.</p>
   <h4>Beispiele:</h4>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
     <div class="grid-element">
