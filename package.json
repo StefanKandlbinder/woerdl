@@ -11,7 +11,8 @@
   "dependencies": {},
   "devDependencies": {
     "parcel": "latest",
-    "@parcel/transformer-sass": "latest"
+    "@parcel/transformer-sass": "latest",
+    "@parcel/transformer-webmanifest": "latest"
   },
   "keywords": []
 }
