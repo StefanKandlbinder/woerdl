@@ -76,11 +76,9 @@ let rowPosition: number = 0;
 
 // duration of the character animation
 let duration: number = parseInt(
-  getComputedStyle(document.documentElement).getPropertyValue('--duration')
-    ? getComputedStyle(document.documentElement)
-        .getPropertyValue('--duration')
-        .split('ms')[0]
-    : '100'
+  getComputedStyle(document.documentElement)
+    .getPropertyValue('--duration')
+    .split('ms')[0]
 );
 
 // keyvoard layout
@@ -232,7 +230,7 @@ function showSnack(
       },
     ],
     {
-      duration: duration,
+      duration: duration ? duration : 400,
       iterations: 1,
       easing: 'ease-in-out',
       fill: 'both',
