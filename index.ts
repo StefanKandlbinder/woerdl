@@ -498,7 +498,7 @@ showSnack(
   ``,
   `<div class="text-sm text-left">Spielerisch die oberösterreichische Mundart kultivieren. <br>Damit es dann im "µ/4" mit der Wegbeschreibung klappt...<br><hr>
   <p>Nach jedem Versuch ändert sich die Farbe der Kacheln.</p>
-  <h4>Beispiele:</h4>
+  <strong>Beispiele:</strong>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
     <div class="grid-element">
       <span class="grid-element-input grid-element-input-animation">K</span>
