@@ -12,7 +12,8 @@
   "devDependencies": {
     "parcel": "latest",
     "@parcel/transformer-sass": "latest",
-    "@parcel/transformer-webmanifest": "latest"
+    "@parcel/transformer-webmanifest": "latest",
+    "@parcel/packager-raw-url": "latest"
   },
   "keywords": []
 }
