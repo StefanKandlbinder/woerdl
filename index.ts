@@ -76,9 +76,11 @@ let rowPosition: number = 0;
 
 // duration of the character animation
 let duration: number = parseInt(
-  getComputedStyle(document.documentElement)
-    .getPropertyValue('--duration')
-    .split('ms')[0]
+  getComputedStyle(document.documentElement).getPropertyValue('--duration')
+    ? getComputedStyle(document.documentElement)
+        .getPropertyValue('--duration')
+        .split('ms')[0]
+    : '100'
 );
 
 // keyvoard layout
