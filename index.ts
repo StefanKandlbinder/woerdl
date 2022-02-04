@@ -54,7 +54,7 @@ let descriptions = new Map<string, string>([
   ],
   [
     'feigeln',
-    'Das Wort ist ein Synonym für ärgern, aus der Fassung bringen. Wenn es "feigelt", dann sollte man einen gewissen Sicherheitsabstand halten.',
+    'Das Wort ist ein Synonym für ärgern, aus der Fassung bringen. Wenn es "feigelt", dann sollte man zur jeweiligen Person einen gewissen Sicherheitsabstand halten.',
   ],
   [
     'drawig',
