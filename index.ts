@@ -546,7 +546,7 @@ showSnack(
   </div>`,
   'intro',
   500,
-  4.5
+  0.5
 );
 
 addRow();

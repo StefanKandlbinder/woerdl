@@ -99,11 +99,8 @@ hr {
     height: var(--grid-size);
     width: var(--grid-size);
     perspective: 1000px;
-    transform-origin: center;
     font-family: inherit;
     background-color: rgba(var(--background) / 0);
-    outline: none;
-    box-shadow: none;
     border: 1px solid rgb(var(--border));
     border-radius: 0;
     text-transform: uppercase;
@@ -113,9 +110,7 @@ hr {
     font-weight: bold;
     line-height: var(--grid-size);
     letter-spacing: 0;
-    // vertical-align: baseline;
     box-sizing: border-box;
-    caret-color: transparent;
 
     &-animation-input {
       transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
@@ -128,10 +123,11 @@ hr {
     }
 
     &-animation-check {
+      transform-origin: center;
+      will-change: transform;
+      transform: rotateX(0deg);
       transition: background-color ease-out var(--duration),
         transform ease-out var(--duration);
-      background-color: rgba(0 0 0 / 0);
-      transform: rotateX(0deg);
     }
 
     &.correct {
