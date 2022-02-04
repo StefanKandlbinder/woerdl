@@ -90,23 +90,18 @@ hr {
   margin-top: var(--grid-gap);
 
   &-disabled {
-    .grid-element-input {
+    .grid-element {
       pointer-events: none;
     }
   }
 
   &-element {
-    position: relative;
     height: var(--grid-size);
     width: var(--grid-size);
     perspective: 1000px;
     transform-origin: center;
-  }
-
-  &-element-input {
-    appearance: none;
     font-family: inherit;
-    background-color: transparent;
+    background-color: rgba(var(--background) / 0);
     outline: none;
     box-shadow: none;
     border: 1px solid rgb(var(--border));
@@ -119,29 +114,43 @@ hr {
     line-height: var(--grid-size);
     letter-spacing: 0;
     // vertical-align: baseline;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: var(--grid-size);
-    height: var(--grid-size);
     box-sizing: border-box;
-    z-index: 100;
     caret-color: transparent;
-    transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
 
-    &-animation {
+    &-animation-input {
+      transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
       animation-name: input;
-      animation-duration: 100ms;
-      // animation-fill-mode: both;
+      animation-duration: 200ms;
       animation-iteration-count: 1;
+      animation-fill-mode: none;
       border-color: rgb(var(--border-active));
       color: rgba(var(--white) / 1);
     }
+
+    &-animation-check {
+      transition: background-color ease-out var(--duration),
+        transform ease-out var(--duration);
+      background-color: rgba(0 0 0 / 0);
+      transform: rotateX(0deg);
+    }
+
+    &.correct {
+      background-color: rgba(var(--success) / 0.95);
+      transform: rotateX(-360deg);
+    }
+
+    &.included {
+      background-color: rgba(var(--included) / 0.95);
+      transform: rotateX(-360deg);
+    }
+
+    &.not-included {
+      background-color: rgba(var(--not-included) / 0.95);
+      transform: rotateX(-360deg);
+    }
   }
 
-  &-element-animation {
+  /* &-element-animation {
     position: absolute;
     top: 0;
     right: 0;
@@ -152,33 +161,12 @@ hr {
       transform ease-out var(--duration);
     background: rgba(0 0 0 / 0);
     transform: rotateX(90deg) scale(0.5);
-  }
+  } */
 
   &-example {
     .grid-element-input {
       color: rgb(var(--background));
     }
-  }
-}
-
-.correct {
-  .grid-element-animation {
-    background-color: rgba(var(--success) / 0.95);
-    transform: rotateX(180deg) scale(1);
-  }
-}
-
-.included {
-  .grid-element-animation {
-    background-color: rgba(var(--included) / 0.95);
-    transform: rotateX(180deg) scale(1);
-  }
-}
-
-.not-included {
-  .grid-element-animation {
-    background-color: rgba(var(--not-included) / 0.95);
-    transform: rotateX(180deg) scale(1);
   }
 }
 

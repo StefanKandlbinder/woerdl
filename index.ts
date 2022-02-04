@@ -112,24 +112,15 @@ function addRow() {
   function doIt() {
     row = [];
     for (let i = 0; i < word.length; i++) {
-      let letterDiv: HTMLElement = document.createElement('div');
-      letterDiv.setAttribute('class', 'grid-element');
-
       let letter: HTMLElement = document.createElement('div');
-      letter.setAttribute('class', 'grid-element-input');
-      letter.setAttribute('data-id', i.toString());
-
-      let animation: HTMLElement = document.createElement('div');
-      animation.setAttribute('class', 'grid-element-animation');
-      animation.setAttribute(
+      letter.setAttribute('class', 'grid-element grid-element-animation-check');
+      letter.setAttribute(
         'style',
         `transition-delay: calc(${duration}ms * ${i})`
       );
+      letter.setAttribute('data-id', i.toString());
 
-      letterDiv.append(letter);
-      letterDiv.append(animation);
-
-      grid!.appendChild(letterDiv);
+      grid!.appendChild(letter);
       row.push(letter);
     }
 
@@ -290,14 +281,10 @@ function checkRow(guess: string, word: string) {
 
   function setLetterState() {
     for (var index = 0; index < word.length; index++) {
-      row[index].parentElement.classList.remove(
-        'correct',
-        'included',
-        'not-included'
-      );
+      row[index].classList.remove('correct', 'included', 'not-included');
 
       if (word[index] === guess[index]) {
-        row[index].parentElement.classList.add('correct');
+        row[index].classList.add('correct');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
           `[data-id=${row[index].innerHTML}]`
@@ -309,7 +296,7 @@ function checkRow(guess: string, word: string) {
       }
 
       if (word.includes(guess[index]) && word[index] !== guess[index]) {
-        row[index].parentElement.classList.add('included');
+        row[index].classList.add('included');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
           `[data-id=${row[index].innerHTML}]`
@@ -322,7 +309,7 @@ function checkRow(guess: string, word: string) {
       }
 
       if (!word.includes(guess[index]) && word[index] !== guess[index]) {
-        row[index].parentElement.classList.add('not-included');
+        row[index].classList.add('not-included');
 
         let element: HTMLButtonElement | null = keyboardElement!.querySelector(
           `[data-id=${row[index].innerHTML}]`
@@ -415,7 +402,7 @@ function getGuess() {
 function keyboardBack() {
   if (rowPosition >= 1 && rowPosition !== row.length - 1) {
     rowPosition -= 1;
-    row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].classList.remove('grid-element-animation-input');
     row[rowPosition].innerHTML = '';
     return;
   }
@@ -424,7 +411,7 @@ function keyboardBack() {
     rowPosition === row.length - 1 &&
     row[row.length - 1].innerHTML !== ''
   ) {
-    row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].classList.remove('grid-element-animation-input');
     row[rowPosition].innerHTML = '';
     return;
   }
@@ -434,7 +421,7 @@ function keyboardBack() {
     row[row.length - 1].innerHTML === ''
   ) {
     rowPosition -= 1;
-    row[rowPosition].classList.remove('grid-element-input-animation');
+    row[rowPosition].classList.remove('grid-element-animation-input');
     row[rowPosition].innerHTML = '';
   }
 }
@@ -454,7 +441,7 @@ function keyboardEnter(character: string) {
           : null;
         break;
       default:
-        row[rowPosition].classList.add('grid-element-input-animation');
+        row[rowPosition].classList.add('grid-element-animation-input');
         row[rowPosition].innerHTML = character;
         rowPosition < row.length - 1
           ? (rowPosition += 1)
@@ -501,64 +488,58 @@ showSnack(
   <strong>Beispiele:</strong>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">K</span>
+      <span class="grid-element-input grid-element-animation-input">K</span>
+    </div>
+    <div class="grid-element grid-element-animation-check grid-element-animation-input included" style="transition-delay: 0">I</div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-animation-input">W</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation" style="background-color: rgb(var(--included))">I</span>
+      <span class="grid-element-input grid-element-animation-input">A</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">W</span>
+      <span class="grid-element-input grid-element-animation-input">R</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">A</span>
-    </div>
-    <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">R</span>
-    </div>
-    <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">A</span>
+      <span class="grid-element-input grid-element-animation-input">A</span>
     </div>
   </div>
   <p>Der Buchstabe I ist im Wort enthalten, aber an der falschen Stelle.</p>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">D</span>
+      <span class="grid-element-input grid-element-animation-input">D</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">A</span>
+      <span class="grid-element-input grid-element-animation-input">A</span>
     </div>
-    <div class="grid-element correct">
-      <span class="grid-element-input grid-element-input-animation" style="background-color: rgb(var(--success))">H</span>
+    <div class="grid-element grid-element-animation-check grid-element-animation-input correct" style="transition-delay: 0">H</div>
+    <div class="grid-element">
+      <span class="grid-element-input grid-element-animation-input">O</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">O</span>
+      <span class="grid-element-input grid-element-animation-input">A</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">A</span>
-    </div>
-    <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">M</span>
+      <span class="grid-element-input grid-element-animation-input">M</span>
     </div>
   </div>
   <p>Der Buchstabe H ist im Wort enthalten und an der richtigen Stelle.</p>
   <div class="grid" style="grid-template-columns: repeat(6, 2.5rem);">
+    <div class="grid-element grid-element-animation-check grid-element-animation-input not-included" style="transition-delay: 0">D</div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation" style="background-color: rgba(var(--not-included) / 1)">D</span>
+      <span class="grid-element-input grid-element-animation-input">R</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">R</span>
-    </div>
-    <div class="grid-element correct">
-      <span class="grid-element-input grid-element-input-animation">A</span>
+      <span class="grid-element-input grid-element-animation-input">A</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">W</span>
+      <span class="grid-element-input grid-element-animation-input">W</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">I</span>
+      <span class="grid-element-input grid-element-animation-input">I</span>
     </div>
     <div class="grid-element">
-      <span class="grid-element-input grid-element-input-animation">G</span>
+      <span class="grid-element-input grid-element-animation-input">G</span>
     </div>
   </div>
   <p>Der Buchstabe D ist im Wort nicht enthalten.</p>
