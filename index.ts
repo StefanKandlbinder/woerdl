@@ -371,7 +371,7 @@ function checkRow(guess: string, word: string) {
 
     showSnack(
       `💡 "${guess.toUpperCase()}", `,
-      `des warat ma gonz wos neichs! 💡`,
+      `des is ma neich! 💡`,
       'warning',
       word.length * duration,
       50

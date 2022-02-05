@@ -131,17 +131,17 @@ hr {
     }
 
     &.correct {
-      background-color: rgba(var(--success) / 0.95);
+      background-color: rgba(var(--success) / 1);
       transform: rotateX(-360deg);
     }
 
     &.included {
-      background-color: rgba(var(--included) / 0.95);
+      background-color: rgba(var(--included) / 1);
       transform: rotateX(-360deg);
     }
 
     &.not-included {
-      background-color: rgba(var(--not-included) / 0.95);
+      background-color: rgba(var(--not-included) / 1);
       transform: rotateX(-360deg);
     }
   }
@@ -186,18 +186,18 @@ hr {
 
   &-success {
     white-space: normal;
-    background: rgba(var(--success) / 0.95);
+    background: rgba(var(--success) / 1);
   }
 
   &-info {
     white-space: normal;
-    background: rgba(var(--white) / 0.95);
+    background: rgba(var(--white) / 1);
     color: rgb(var(--background));
   }
 
   &-intro {
     white-space: normal;
-    background: rgba(var(--background) / 0.95);
+    background: rgba(var(--background) / 1);
     color: rgb(var(--white));
   }
 }
@@ -268,7 +268,7 @@ hr {
     }
 
     &.not-included {
-      background-color: rgba(var(--not-included) / 0.95);
+      background-color: rgba(var(--not-included) / 1);
       color: rgb(var(--white));
     }
   }
