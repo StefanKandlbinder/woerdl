@@ -471,7 +471,55 @@ createKeyboard(keyboard);
 
 // handle the native enter event
 document.addEventListener('keyup', function (event) {
-  keyboardEnter(event.key);
+  /* keyboard.map((row) => {
+    row.map((key) => {
+      if (
+        event.key === key ||
+        event.key === 'Enter' ||
+        event.key === 'Backspace'
+      ) {
+        event.stopPropagation();
+        return false;
+      }
+    });
+  }); */
+  switch (event.key) {
+    case 'q':
+    case 'w':
+    case 'e':
+    case 'r':
+    case 't':
+    case 'z':
+    case 'u':
+    case 'i':
+    case 'o':
+    case 'p':
+    case 'ü':
+    case 'a':
+    case 's':
+    case 'd':
+    case 'f':
+    case 'g':
+    case 'h':
+    case 'j':
+    case 'k':
+    case 'l':
+    case 'ö':
+    case 'ä':
+    case 'y':
+    case 'x':
+    case 'c':
+    case 'v':
+    case 'b':
+    case 'n':
+    case 'm':
+    case 'Backspace':
+    case 'Enter':
+      keyboardEnter(event.key);
+      break;
+    default:
+      break;
+  }
 });
 
 showSnack(
