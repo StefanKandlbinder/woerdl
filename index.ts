@@ -374,7 +374,7 @@ function checkRow(guess: string, word: string) {
     return;
   }
 
-  if (words.includes(guess.toLocaleLowerCase())) {
+  if (words.includes(guess)) {
     setLetterState();
     rowPosition = 0;
     addRow();
@@ -435,7 +435,7 @@ function keyboardEnter(character: string) {
       default:
         row[rowPosition].classList.add('grid-element-animation-input');
         row[rowPosition].setAttribute('style', `transition-delay: 0`);
-        row[rowPosition].innerHTML = character;
+        row[rowPosition].innerHTML = character.toLowerCase();
         rowPosition < row.length - 1
           ? (rowPosition += 1)
           : (rowPosition = row.length - 1);
@@ -471,54 +471,20 @@ createKeyboard(keyboard);
 
 // handle the native enter event
 document.addEventListener('keyup', function (event) {
-  // weird behavior on backspace - clears the whole line
-  /* keyboard.map((row) => {
+  keyboard.map((row) => {
     row.map((key) => {
-      if (
-        event.key === key ||
-        event.key === 'Enter' ||
-        event.key === 'Backspace'
-      ) {
-        event.stopPropagation();
-        return false;
+      if (event.key === key || event.key === key.toUpperCase()) {
+        keyboardEnter(event.key);
       }
     });
-  }); */
+  });
+
   switch (event.key) {
-    case 'q':
-    case 'w':
-    case 'e':
-    case 'r':
-    case 't':
-    case 'z':
-    case 'u':
-    case 'i':
-    case 'o':
-    case 'p':
-    case 'ü':
-    case 'a':
-    case 's':
-    case 'd':
-    case 'f':
-    case 'g':
-    case 'h':
-    case 'j':
-    case 'k':
-    case 'l':
-    case 'ö':
-    case 'ä':
-    case 'y':
-    case 'x':
-    case 'c':
-    case 'v':
-    case 'b':
-    case 'n':
-    case 'm':
-    case 'Backspace':
     case 'Enter':
       keyboardEnter(event.key);
       break;
-    default:
+    case 'Backspace':
+      keyboardEnter(event.key);
       break;
   }
 });
