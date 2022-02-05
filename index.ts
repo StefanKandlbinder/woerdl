@@ -471,6 +471,7 @@ createKeyboard(keyboard);
 
 // handle the native enter event
 document.addEventListener('keyup', function (event) {
+  // weird behavior on backspace - clears the whole line
   /* keyboard.map((row) => {
     row.map((key) => {
       if (
