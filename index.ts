@@ -260,14 +260,7 @@ function showSnack(
 
 // yeeeha, you got it right
 function done() {
-  let zruck: HTMLButtonElement | null =
-    document.querySelector('[data-id="zruck"');
-  if (zruck) zruck!.focus();
-
-  document.onkeydown = function (e) {
-    return false;
-  };
-
+  document.removeEventListener('keyup', handleKeyUp, true);
   keyboardElement!.classList.add('keyboard-disabled');
   grid!.classList.add('grid-disabled');
 }
@@ -469,8 +462,7 @@ function createKeyboard(keyboard: any) {
 
 createKeyboard(keyboard);
 
-// handle the native enter event
-document.addEventListener('keyup', function (event) {
+function handleKeyUp(event: any) {
   keyboard.map((row) => {
     row.map((key) => {
       if (event.key === key || event.key === key.toUpperCase()) {
@@ -487,7 +479,10 @@ document.addEventListener('keyup', function (event) {
       keyboardEnter(event.key);
       break;
   }
-});
+}
+
+// handle the native enter event
+document.addEventListener('keyup', handleKeyUp, true);
 
 showSnack(
   ``,
