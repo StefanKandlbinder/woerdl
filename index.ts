@@ -113,7 +113,7 @@ function addRow() {
     row = [];
     for (let i = 0; i < word.length; i++) {
       let letter: HTMLElement = document.createElement('div');
-      letter.setAttribute('class', 'grid-element grid-element-animation-check');
+      letter.setAttribute('class', 'grid-element');
       letter.setAttribute(
         'style',
         `transition-delay: calc(${duration}ms * ${i})`
@@ -279,45 +279,37 @@ function checkRow(guess: string, word: string) {
     `${word.length * duration}ms`
   );
 
+  function updateClasses(className: string, index: number) {
+    row[index].classList.add(className);
+
+    // update virtual keyboard
+    let element: HTMLButtonElement | null = keyboardElement!.querySelector(
+      `[data-id=${row[index].innerHTML}]`
+    );
+    if (element) {
+      element.classList.remove('correct', 'included', 'not-included');
+      element.classList.add(className);
+    }
+  }
+
   function setLetterState() {
     for (var index = 0; index < word.length; index++) {
       row[index].classList.remove('correct', 'included', 'not-included');
+      row[index].setAttribute(
+        'style',
+        `transition-delay: calc(${duration}ms * ${index})`
+      );
 
       if (word[index] === guess[index]) {
-        row[index].classList.add('correct');
-
-        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].innerHTML}]`
-        );
-        if (element) {
-          element.classList.remove('correct', 'included', 'not-included');
-          element.classList.add('correct');
-        }
+        updateClasses('correct', index);
       }
 
       if (word.includes(guess[index]) && word[index] !== guess[index]) {
-        row[index].classList.add('included');
-
-        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].innerHTML}]`
-        );
-
-        if (element) {
-          element.classList.remove('correct', 'included', 'not-included');
-          element.classList.add('included');
-        }
+        updateClasses('included', index);
       }
 
       if (!word.includes(guess[index]) && word[index] !== guess[index]) {
-        row[index].classList.add('not-included');
-
-        let element: HTMLButtonElement | null = keyboardElement!.querySelector(
-          `[data-id=${row[index].innerHTML}]`
-        );
-        if (element) {
-          element.classList.remove('correct', 'included', 'not-included');
-          element.classList.add('not-included');
-        }
+        updateClasses('not-included', index);
       }
     }
   }
@@ -442,6 +434,7 @@ function keyboardEnter(character: string) {
         break;
       default:
         row[rowPosition].classList.add('grid-element-animation-input');
+        row[rowPosition].setAttribute('style', `transition-delay: 0`);
         row[rowPosition].innerHTML = character;
         rowPosition < row.length - 1
           ? (rowPosition += 1)
@@ -546,7 +539,7 @@ showSnack(
   </div>`,
   'intro',
   500,
-  4.5
+  0.5
 );
 
 addRow();

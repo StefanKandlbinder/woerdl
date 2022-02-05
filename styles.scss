@@ -12,8 +12,8 @@
   --key: 115 115 115;
   --key-width: 1.5rem;
   --key-state-delay: 300ms;
-  --border: 60 60 60;
-  --border-active: 80 80 80;
+  --border: 80 80 80;
+  --border-active: 180 180 180;
 }
 
 @media (min-width: 360px) {
@@ -25,7 +25,7 @@
 
 @media (min-width: 450px) {
   :root {
-    --grid-gap: 0.3rem;
+    --grid-gap: 0.4rem;
     --key-width: 2rem;
   }
 }
@@ -98,22 +98,24 @@ hr {
   &-element {
     height: var(--grid-size);
     width: var(--grid-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     perspective: 1000px;
     font-family: inherit;
     background-color: rgba(var(--background) / 0);
     border: 1px solid rgb(var(--border));
     border-radius: 0;
     text-transform: uppercase;
-    text-align: center;
     color: rgba(var(--white) / 0.1);
     font-size: 1.2rem;
     font-weight: bold;
     line-height: var(--grid-size);
     letter-spacing: 0;
     box-sizing: border-box;
+    transition: color 190ms ease-out 10ms, border-color 190ms ease-out 10ms;
 
     &-animation-input {
-      transition: color 200ms 50ms ease-out, border-color 200ms 50ms ease-out;
       animation-name: input;
       animation-duration: 200ms;
       animation-iteration-count: 1;
@@ -124,40 +126,38 @@ hr {
 
     &-animation-check {
       transform-origin: center;
-      will-change: transform;
       transform: rotateX(0deg);
       transition: background-color ease-out var(--duration),
         transform ease-out var(--duration);
     }
 
     &.correct {
+      transition: background-color ease-out var(--duration),
+        border-color ease-out var(--duration),
+        transform ease-out var(--duration);
       background-color: rgba(var(--success) / 1);
-      transform: rotateX(-360deg);
+      border-color: rgb(var(--success));
+      transform: rotateX(360deg);
     }
 
     &.included {
+      transition: background-color ease-out var(--duration),
+        border-color ease-out var(--duration),
+        transform ease-out var(--duration);
       background-color: rgba(var(--included) / 1);
-      transform: rotateX(-360deg);
+      border-color: rgb(var(--included));
+      transform: rotateX(360deg);
     }
 
     &.not-included {
+      transition: background-color ease-out var(--duration),
+        border-color ease-out var(--duration),
+        transform ease-out var(--duration);
       background-color: rgba(var(--not-included) / 1);
-      transform: rotateX(-360deg);
+      border-color: rgb(var(--not-included));
+      transform: rotateX(360deg);
     }
   }
-
-  /* &-element-animation {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border-radius: 0;
-    transition: background-color ease-out var(--duration),
-      transform ease-out var(--duration);
-    background: rgba(0 0 0 / 0);
-    transform: rotateX(90deg) scale(0.5);
-  } */
 
   &-example {
     .grid-element-input {
