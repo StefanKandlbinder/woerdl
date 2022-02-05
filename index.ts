@@ -1,16 +1,16 @@
 import './styles.scss';
 
 // the surrounding container
-let container: HTMLElement | null = document.getElementById('container');
+const container: HTMLElement | null = document.getElementById('container');
 
 // the characters grid
 let grid: HTMLElement | null;
 
 // the virtual keyboard
-let keyboardElement: HTMLElement | null = document.getElementById('keyboard');
+const keyboardElement: HTMLElement | null = document.getElementById('keyboard');
 
 // a list if all the words to guess
-let words: string[] = [
+const words: string[] = [
   'neichtl',
   'klappal',
   'sunbeng',
@@ -25,7 +25,7 @@ let words: string[] = [
 ];
 
 // the corresponding descriptions of the words
-let descriptions = new Map<string, string>([
+const descriptions = new Map<string, string>([
   ['goi', 'Unverkennbare Satzendung, die Zustimmung vom Zuhörer verlangt.'],
   [
     'neichtl',
